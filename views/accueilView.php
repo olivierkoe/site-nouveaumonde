@@ -1,6 +1,8 @@
 <?php ob_start() ?>
 
-<p>accueil</p>
+<div class="" style="height: 600px">
+
+</div>
 
 <?php
 
