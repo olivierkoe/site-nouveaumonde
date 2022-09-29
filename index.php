@@ -83,7 +83,7 @@ try {
                     $contLowtech->supprimerlowtech($url[2]);
                 } else if ($url[1] === "ajouter") {
                     $contLowtech->ajoutLowtech();
-                } else if ($url[1] === "valider") {
+                } else if ($url[1] === "ajoutValider") {
                     $contLowtech->ajoutLowtechValidation();
                 } else if ($url[1] === "lowtechs") {
                     $contLowtech->afficherLowtechs($url[2]);
@@ -104,7 +104,7 @@ try {
                     $contalternative->supprimerAlternative($url[2]);
                 } else if ($url[1] === "ajouter") {
                     $contalternative->ajoutAlternative();
-                } else if ($url[1] === "ajoutvalider") {
+                } else if ($url[1] === "ajoutValider") {
                     $contalternative->ajoutAlternativeValidation();
                 } else if ($url[1] === "alternatives") {
                     $contalternative->afficherAlternatives($url[2]);

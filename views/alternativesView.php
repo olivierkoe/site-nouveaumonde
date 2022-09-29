@@ -38,7 +38,7 @@
     ?>
 
 </div>
-<a href="<?= URL ?>alternatives/ajouter" class="btn btn-success mb-3">Ajouter</a>
+<a href="<?= URL ?>alternatives/ajouter" class="btn btn-success mb-3 mt-5">Ajouter</a>
 <?php
 
 $titre = "Liste des alternatives";

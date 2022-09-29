@@ -3,7 +3,7 @@
 
 ?>
 <div class="m-2 p-2 border border-dark rounded-1">
-    <form action="<?= URL ?>ateliers/valider" method="POST" enctype="multipart/form-data">
+    <form action="<?= URL ?>lowtechs/ajoutValider" method="POST" enctype="multipart/form-data">
         <div class="input-group mb-1">
             <label for="titre" class="">Titre</label>
         </div>
@@ -58,11 +58,17 @@
         <div>
             <input type="file" name="image" class=" form-control" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload">
         </div>
-        <button class="btn btn-success mt-2">Validez</button>
-    </form>
+        <label for="imagePrincipe">Image de principe :</label>
+
+        <div>
+            <input type="file" name="imagePrincipe" class=" form-control" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload">
+        </div>
+</div>
+<button class="btn btn-success mt-2">Validez</button>
+</form>
 
 </div>
 <?php
-$titre = "Ajout Atelier";
+$titre = "Ajout Lowtech";
 $content = ob_get_clean();
 require_once "views/template.php";

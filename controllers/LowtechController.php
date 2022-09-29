@@ -40,10 +40,21 @@ class LowtechController
 
     public function ajoutLowtechValidation()
     {
+        //Stock les information de l'image de présentation dans la variable iunfos
         $infos = $_FILES['image'];
-        $stockImage = "public/images/";
+        //Stock les information de l'image de principe dans la variable iunfos2
+        $infos2 = $_FILES['imagePrincipe'];
+        //dossier de sauvegarde de l'image de presentation
+        $stockImage = "public/images/lowtech/imagepresentation/";
+        //dossier de sauvegarde de l'image de Principe
+        $stockImagePrincipe = "public/images/lowtech/imagePrincipe/";
+
         $saveImage = GlobalController::ajoutImage($_POST['titre'], $infos, $stockImage);
-        $resultAjout = $this->lowtechManager->ajoutLowtechBD($_POST['titre'], $_POST['materiaux'], $_POST['fabrication'], $_POST['fonctionnement'], $saveImage, $_POST['difficulte'], $_POST['temps'], $_POST['necessite'], $_POST['source']);
+
+        $saveImagePrincipe = GlobalController::ajoutImage($_POST['titre'], $infos2, $stockImagePrincipe);
+        //ajoute la lowtech à la base de donnés
+        $resultAjout = $this->lowtechManager->ajoutLowtechBD($_POST['titre'], $_POST['materiaux'], $_POST['fabrication'], $_POST['fonctionnement'], $saveImage, $saveImagePrincipe, $_POST['difficulte'], $_POST['temps'], $_POST['necessite'], $_POST['source']);
+
         if (!$resultAjout) {
             throw new Exception("lowtech non ajouter");
         }
@@ -73,11 +84,7 @@ class LowtechController
     public function modifierLowtechValider()
     {
         $lowtechInfos = $_POST;
-        // var_dump($lowtechInfos);
-        // exit;
         $lowtechImage = $_FILES;
-        // var_dump($lowtechImage);
-        // exit;
 
         if ($lowtechImage['newImage']['size'] !== 0 && $lowtechImage['newImage']['size'] !== $lowtechInfos['imagePresentation']) {
             $imgToAdd = $lowtechImage['newImage']['name'];

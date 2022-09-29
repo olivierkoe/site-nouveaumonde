@@ -50,7 +50,7 @@ class AlternativeManager extends Model
             ":email" => $email,
             ":site" => $site
         ]);
-        return $result;
+        var_dump($result);
     }
 
     public function supprimerAlternativeBD($id)

@@ -33,9 +33,10 @@ class AlternativeController
     public function ajoutAlternativeValidation()
     {
         $infos = $_FILES['image'];
-        $stockImage = "public/images/alternatives/";
+        $stockImage = "public/images/alternatives/validation/";
         $saveImage = GlobalController::ajoutImage($_POST['titre'], $infos, $stockImage);
-        $resultAjout = $this->alternativeManager->ajoutAlternativeBD($_POST['titre'], $_POST['theme'], $saveImage);
+
+        $resultAjout = $this->alternativeManager->ajoutAlternativeBD($_POST['titre'], $saveImage, $_POST['theme'], $_POST['email'], $_POST['site']);
         if (!$resultAjout) {
             throw new Exception("Alternative non ajouter");
         }
@@ -68,11 +69,11 @@ class AlternativeController
 
         if ($alternativeImage['newImage']['size'] !== 0 && $alternativeImage['newImage']['size'] !== $alternativeInfos['image']) {
             $imgToAdd = $alternativeImage['newImage']['name'];
-            $this->alternativeManager->modifierAlternativeBD($_POST['id'], $alternativeInfos['titre'], $alternativeInfos['materiaux'], $alternativeInfos['fabrication'], $_POST['fonctionnement'], $imgToAdd, $_POST['difficulte'], $_POST['temps'], $_POST['necessite']);
+            $this->alternativeManager->modifierAlternativeBD($_POST['id'], $alternativeInfos['titre'], $alternativeInfos['theme'], $alternativeInfos['email'], $_POST['site'], $imgToAdd);
             header("location: ../alternatives");
         } else {
             $imgToAdd = $alternativeInfos['image'];
-            $this->alternativeManager->modifierAlternativeBD($_POST['id'], $alternativeInfos['titre'], $alternativeInfos['materiaux'], $alternativeInfos['fabrication'], $_POST['fonctionnement'], $imgToAdd, $_POST['difficulte'], $_POST['temps'], $_POST['necessite']);
+            $this->alternativeManager->modifierAlternativeBD($_POST['id'], $alternativeInfos['titre'], $alternativeInfos['theme'], $alternativeInfos['email'], $_POST['site'], $imgToAdd);
             header("location: ../alternative");
         }
         GlobalController::manageErrors("success", "Les modifications ont bien été enregistrées");

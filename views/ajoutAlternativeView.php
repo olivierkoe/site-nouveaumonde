@@ -1,9 +1,8 @@
 <?php ob_start() ?>
-<?php
 
-?>
+
 <div class="mb-5 p-3 mt-5 bg-light rounded-1">
-    <form action="<?= URL ?>alternatives/ajoutvalider" method="POST" enctype="multipart/form-data">
+    <form action="<?= URL ?>alternatives/valider" method="POST" enctype="multipart/form-data">
         <div class="input-group mb-1">
             <label for="titre" class="">Titre</label>
         </div>
