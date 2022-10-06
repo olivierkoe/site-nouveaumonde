@@ -16,7 +16,7 @@ class LowtechController
     public function afficherLowtechs()
     {
         $listelowtechs = $this->lowtechManager->getLowtech();
-        require "views/lowtechsView.php";
+        require "views/Read/lowtechsView.php";
     }
 
     public function afficherLowtech($id)
@@ -25,7 +25,7 @@ class LowtechController
         $necessite = $this->exploder($lowtech->getMateriaux());
         $fabrication = $this->exploder($lowtech->getFabrication());
         $fonctionnement = $this->exploder($lowtech->getFonctionnement());
-        require "views/lowtechView.php";
+        require "views/Read/lowtechView.php";
     }
 
     private function exploder($array)
@@ -35,7 +35,7 @@ class LowtechController
 
     public function ajoutLowtech()
     {
-        require "views/ajoutLowtechView.php";
+        require "views/Update/ajoutLowtechView.php";
     }
 
     public function ajoutLowtechValidation()
@@ -77,8 +77,9 @@ class LowtechController
 
     public function modifierLowtech($id)
     {
+
         $lowtech = $this->lowtechManager->getLowtechById($id);
-        require "views/modifierLowtechView.php";
+        require "views/Update/modifierLowtechView.php";
     }
 
     public function modifierLowtechValider()

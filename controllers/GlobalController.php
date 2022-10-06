@@ -23,8 +23,8 @@ abstract class  GlobalController
                 throw new Exception("L'extension du fichier n'est pas reconnu");
             }
 
-            if ($file['size'] > 5000000) {
-                throw new Exception("Le fichier existe déjà");
+            if ($file['size'] > 6000000) {
+                throw new Exception("Image trop volumineuse");
             }
 
             if (move_uploaded_file($file['tmp_name'], $target_file)) {

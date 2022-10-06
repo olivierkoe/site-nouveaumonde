@@ -6,28 +6,44 @@
 body{
     width: 100%;
     height: 100%;
-    background-image: url(./public/images/images.png);
-    background-size: cover;
-    background-repeat: no-repeat;
+    background-color: #F2F1DC ;
+    color: black;
     font-family: Gothic A1;
 
 }
 
-#navheader{
-    background-color: #F2F2F2;
-    font-family: Economica A1;
-
-}
-#navbarColor02{
-    color:#81A9B8;
-}
-
 #titeTemplate{
-    color: #81A9B8;
+    color: black;
     background-color: #F2F1DC;
-}
+} 
+
 
 #footer{
-    background-color: #F2F1DC !important;
-    color: black !important;
+    background-color: #F2F2F2 !important;
+}
+
+#mainAtelier{
+color: #F2F2F2 ;
+/* color: #6FA8BF ; */
+background-color: #6FA8BF;
+/* background-color: #F2F2F2; */
+}
+
+#atelierContainer h2{
+    text-align: center;
+}
+#legendeProgress{
+    text-align: center;
+}
+
+#atelierCard h5{
+    height: 20%;
+    color: #81A9B8;
+    text-align: center;
+}
+
+#atelierCard{
+    height: 320px;
+        color: black;
+    background-color: #F2F2F2 
 }

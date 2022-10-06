@@ -16,7 +16,7 @@ class UserController
     public function afficherConnexion()
     {
         if (!isset($_SESSION['pseudo'])) {
-            require "views/connexionView.php";
+            require "views/Read/connexionView.php";
         } else {
             GlobalController::manageErrors("danger", "Vous êtes déjà connecté ...");
             header("location:" . URL . "accueil");
@@ -58,7 +58,7 @@ class UserController
     public function afficherInscription()
     {
         if (!isset($_SESSION['pseudo'])) {
-            require "views/inscriptionView.php";
+            require "views/Read/inscriptionView.php";
         } else {
             GlobalController::manageErrors("danger", "Vous êtes déjà inscrit ...");
             header("location:" . URL . "accueil");

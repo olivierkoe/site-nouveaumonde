@@ -24,7 +24,7 @@ class ConferenceManager extends Model
         $req->execute([]);
         $data = $req->fetchAll(PDO::FETCH_ASSOC);
         foreach ($data as $value) {
-            $newconference = new conference($value['titre'], $value["theme"],  $value['date'], $value['invite'], $value['synopsis'], $value['heure'], $value['image'], $value['id']);
+            $newconference = new conference($value['titre'], $value["theme"],  $value['invite'], $value['synopsis'], $value['date'],  $value['heure'], $value['image'], $value['id']);
             $this->ajoutConference($newconference);
         }
     }
@@ -32,7 +32,7 @@ class ConferenceManager extends Model
     public function getConferenceById($id)
     {
         foreach ($this->conferences as $value) {
-            if ($value->getId() === $id) {
+            if ($value->getId() == $id) {
                 return $value;
             }
         }
@@ -65,18 +65,19 @@ class ConferenceManager extends Model
 
     public function modifierConferenceBD($id, $titre, $theme, $invite, $synopsis, $date, $heure, $image)
     {
+        var_dump($id);
         $db = $this->getBdd();
         $sql = "UPDATE conference SET titre = :titre, theme = :theme, invite = :invite, synopsis = :synopsis, date = :date, heure = :heure, image = :image WHERE id = :id";
         $req = $db->prepare($sql);
         $req->execute([
-            ":id" => $id,
             ":titre" => $titre,
             ":theme" => $theme,
             ":invite" => $invite,
             ":synopsis" => $synopsis,
             ":date" => $date,
             ":heure" => $heure,
-            ":image" => $image
+            ":image" => $image,
+            ":id" => $id
 
         ]);
     }

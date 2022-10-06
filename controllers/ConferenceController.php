@@ -17,26 +17,26 @@ class ConferenceController
     public function afficherConferences()
     {
         $listeconferences = $this->conferenceManager->getConference();
-        require "views/conferencesView.php";
+        require "views/Read/conferencesView.php";
     }
 
     public function afficherConference($id)
     {
         $conference = $this->conferenceManager->getConferenceById($id);
-        require "views/conferenceView.php";
+        require "views/Read/conferenceView.php";
     }
 
     public function ajoutConference()
     {
-        require "views/ajoutconferenceView.php";
+        require "views/Update/ajoutconferenceView.php";
     }
 
     public function ajoutConferenceValidation()
     {
         $infos = $_FILES['image'];
-        $stockImage = "public/images/";
+        $stockImage = "public/images/conferences/";
         $saveImage = GlobalController::ajoutImage($_POST['titre'], $infos, $stockImage);
-        $resultAjout = $this->conferenceManager->ajoutConferenceBD($_POST['titre'], $_POST['invite'], $_POST['synopsis'], $_POST['date'], $_POST['heure'], $saveImage);
+        $resultAjout = $this->conferenceManager->ajoutConferenceBD($_POST['titre'], $_POST['theme'], $_POST['invite'], $_POST['synopsis'], $_POST['date'], $_POST['heure'], $saveImage);
         if (!$resultAjout) {
             throw new Exception("conference non ajouter");
         }
@@ -60,7 +60,7 @@ class ConferenceController
     public function modifierConference($id)
     {
         $conference = $this->conferenceManager->getConferenceById($id);
-        require "views/modifierConferenceView.php";
+        require "views/Update/modifierConferenceView.php";
     }
 
     public function modifierConferenceValider()
@@ -71,11 +71,11 @@ class ConferenceController
 
         if ($conferenceImage['newImage']['size'] !== 0 && $conferenceImage['newImage']['size'] !== $conferenceInfos['image']) {
             $imgToAdd = $conferenceImage['newImage']['name'];
-            $this->conferenceManager->modifierConferenceBD($_POST['id'], $conferenceInfos['titre'], $conferenceInfos['invite'], $_POST['synopsis'], $conferenceInfos['date'], $_POST['heure'], $imgToAdd);
+            $this->conferenceManager->modifierConferenceBD($_POST['id'], $conferenceInfos['titre'], $conferenceInfos['theme'], $conferenceInfos['invite'], $_POST['synopsis'], $conferenceInfos['date'], $_POST['heure'], $imgToAdd);
             header("location: ../conferences");
         } else {
             $imgToAdd = $conferenceInfos['image'];
-            $this->conferenceManager->modifierConferenceBD($_POST['id'], $conferenceInfos['titre'], $conferenceInfos['invite'], $_POST['synopsis'], $conferenceInfos['date'], $_POST['heure'], $imgToAdd);
+            $this->conferenceManager->modifierConferenceBD($_POST['id'], $conferenceInfos['titre'], $conferenceInfos['theme'], $conferenceInfos['invite'], $_POST['synopsis'], $conferenceInfos['date'], $_POST['heure'], $imgToAdd);
             header("location: ../conference");
         }
         GlobalController::manageErrors("success", "Les modifications ont bien été enregistrées");

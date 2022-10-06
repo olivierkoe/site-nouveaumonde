@@ -1,0 +1,61 @@
+<?php ob_start();
+
+?>
+<div class="container card d-flex flex-row flex-wrap ps-3 mt-3 bg-transparent border border-0" id="principal">
+    <?php
+    foreach ($listePartenaires as $value) {
+    ?>
+        <div class="card d-flex flex-row flex-wrap mt-3 border border-1 mb-3 m-auto p-3" style="width: 45%;">
+
+            <div class="card-body col-8" style=" height: 70%">
+                <h5 class="card-title"><a href="<?= $value->getEmail() ?>"><?= $value->getTitre() ?></a></h5>
+                <P class="list-group-item border border-0"><?= $value->getDescription() ?></p>
+
+            </div>
+            <div class="col-4">
+                <img class="card-img-top rounded-circle" style="height: 50%; object-fit: contain;" alt="image<?= $value->getTitre() ?>" src="<?= URL ?>public/images/partenaire/<?= $value->getImage() ?>" />
+            </div>
+            <div>
+                <div class="card-body d-flex align-items-end justify-content-center">
+                    <ul class="list-group list-group-flush">
+                        <div class="d-flex flex-column">
+                            <li class="list-group-item border border-0"><?= $value->getSiteWeb() ?></li>
+                            <li class="list-group-item border border-0"><?= $value->getEmail() ?></li>
+                        </div>
+                    </ul>
+                </div>
+                <?php
+                if ($_SESSION['role'] === "1") {
+                ?>
+                    <div class="card-body d-flex align-items-end justify-content-center">
+                        <div class="text-end">
+                            <form action="<?= URL ?>partenaires/supprimer/<?= $value->getId() ?>" method="POST" onsubmit="confirm('Voulez vous vraiment supprimer cette atelier ?')">
+                                <button class="btn btn-danger">Supprimer</button>
+                                <a href="<?= URL ?>partenaires/modifier/<?= $value->getId() ?>" class="btn btn-warning">Modifier</a>
+                            </form>
+                        </div>
+                    </div>
+                <?php
+                }
+                ?>
+            </div>
+        </div>
+    <?php
+    }
+    ?>
+
+</div>
+<?php
+if ($_SESSION['role'] === "1") {
+?>
+    <div class="d-flex justify-content-center">
+        <a href="<?= URL ?>partenaires/ajouter" class="btn btn-success d-block col-3">Ajouter</a>
+    </div>
+<?php
+}
+?>
+<?php
+
+$titre = "Partenaires";
+$content = ob_get_clean();
+require_once "views/Read/template.php";

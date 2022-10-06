@@ -4,19 +4,31 @@ class Atelier
 {
 
     private $titre;
-    private $temps;
-    private $image;
-    private $necessite;
+    private $argument1;
+    private $sourceArg1;
+    private $prix1;
+    private $argument2;
+    private $sourceArg2;
+    private $prix2;
+    private $argument3;
+    private $sourceArg3;
+    private $prix3;
     private $id;
 
 
-    function __construct($titre, $temps, $image, $necessite, $id)
+    function __construct($titre, $argument1, $argument2, $argument3,  $sourceArg1, $sourceArg2, $sourceArg3, $prix1, $prix2, $prix3, $id)
     {
 
         $this->titre = $titre;
-        $this->temps = $temps;
-        $this->image = $image;
-        $this->necessite = $necessite;
+        $this->argument1 = $argument1;
+        $this->sourceArg1 = $sourceArg1;
+        $this->prix1 = $prix1;
+        $this->argument2 = $argument2;
+        $this->sourceArg2 = $sourceArg2;
+        $this->prix2 = $prix2;
+        $this->argument3 = $argument3;
+        $this->sourceArg3 = $sourceArg3;
+        $this->prix3 = $prix3;
         $this->id = $id;
     }
 
@@ -25,18 +37,49 @@ class Atelier
         return $this->titre;
     }
 
-    public function getTemps()
+    public function getArgument1()
     {
-        return $this->temps;
+        return $this->argument1;
     }
 
-    public function getImage()
+    public function getArgument2()
     {
-        return $this->image;
+        return $this->argument2;
     }
-    public function getNecessite()
+
+    public function getArgument3()
     {
-        return $this->necessite;
+        return $this->argument3;
+    }
+
+    public function getsourceArg1()
+    {
+        return $this->sourceArg1;
+    }
+
+    public function getsourceArg2()
+    {
+        return $this->sourceArg2;
+    }
+
+    public function getsourceArg3()
+    {
+        return $this->sourceArg3;
+    }
+
+    public function getPrix1()
+    {
+        return $this->prix1;
+    }
+
+    public function getPrix2()
+    {
+        return $this->prix2;
+    }
+
+    public function getPrix3()
+    {
+        return $this->prix3;
     }
 
     public function getid()
@@ -52,21 +95,56 @@ class Atelier
         return $this;
     }
 
-    public function setTemps($temps)
+    public function setArgument1($argument1)
     {
-        $this->temps = $temps;
+        $this->argument1 = $argument1;
         return $this;
     }
 
-    public function setImage($image)
+    public function setArgument2($argument2)
     {
-        $this->image = $image;
+        $this->argument2 = $argument2;
         return $this;
     }
 
-    public function setNecessite($necessite)
+    public function setArgument3($argument3)
     {
-        $this->necessite = $necessite;
+        $this->argument3 = $argument3;
+        return $this;
+    }
+
+    public function setSourceArg1($sourceArg1)
+    {
+        $this->sourceArg1 = $sourceArg1;
+        return $this;
+    }
+    public function setSourceArg2($sourceArg2)
+    {
+        $this->sourceArg2 = $sourceArg2;
+        return $this;
+    }
+
+    public function setSourceArg3($sourceArg3)
+    {
+        $this->sourceArg3 = $sourceArg3;
+        return $this;
+    }
+
+    public function setPrix1($prix1)
+    {
+        $this->prix1 = $prix1;
+        return $this;
+    }
+
+    public function setPrix2($prix2)
+    {
+        $this->prix2 = $prix2;
+        return $this;
+    }
+
+    public function setPrix3($prix3)
+    {
+        $this->prix3 = $prix3;
         return $this;
     }
 }

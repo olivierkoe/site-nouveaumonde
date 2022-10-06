@@ -31,7 +31,10 @@ class AlternativeManager extends Model
 
     public function getAlternativeById($id)
     {
+        $id = intval($id);
+
         foreach ($this->alternatives as $value) {
+
             if ($value->getId() === $id) {
                 return $value;
             }
@@ -41,16 +44,15 @@ class AlternativeManager extends Model
     public function ajoutAlternativeBD($titre, $image, $theme, $email, $site)
     {
         $db = $this->getBdd();
-        $sql = "INSERT INTO alternative (titre, image, theme, email, site) VALUES (:titre, :image, :theme, :email, :site)";
+        $sql = "INSERT INTO alternative (titre, theme, email, site, image) VALUES (:titre, :theme, :email, :site ,:image )";
         $req = $db->prepare($sql);
         $result = $req->execute([
             ":titre" => $titre,
-            ":image" => $image,
             ":theme" => $theme,
             ":email" => $email,
-            ":site" => $site
+            ":site" => $site,
+            ":image" => $image
         ]);
-        var_dump($result);
     }
 
     public function supprimerAlternativeBD($id)
@@ -63,17 +65,18 @@ class AlternativeManager extends Model
         ]);
     }
 
-    public function modifierAlternativeBD($titre, $image, $theme, $email, $site)
+    public function modifierAlternativeBD($titre, $image, $theme, $email, $site, $id)
     {
         $db = $this->getBdd();
-        $sql = "UPDATE alternative SET titre =:titre, image =:image, theme = :theme , email = :email, site = :site";
+        $sql = "UPDATE alternative SET titre =:titre, image =:image, theme = :theme , email = :email, site = :site WHERE id = :id";
         $req = $db->prepare($sql);
         $req->execute([
             ":titre" => $titre,
             ":image" => $image,
             ":theme" => $theme,
             ":email" => $email,
-            ":site" => $site
+            ":site" => $site,
+            ":id" => $id
 
         ]);
     }

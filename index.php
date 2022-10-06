@@ -4,6 +4,7 @@ require "controllers/AtelierController.php";
 require "controllers/ConferenceController.php";
 require "controllers/LowtechController.php";
 require "controllers/AlternativeController.php";
+require "controllers/PartenaireController.php";
 require "controllers/UserController.php";
 
 session_start();
@@ -17,39 +18,19 @@ $contAtelier = new AtelierController();
 $contConference = new ConferenceController();
 $contLowtech = new LowtechController();
 $contalternative = new AlternativeController();
+$contPartenaire = new PartenaireController();
 $userController = new UserController();
 
 try {
 
     if (empty($_GET['page'])) {
-        require "views/accueilView.php";
+        require "views/Read/accueilView.php";
     } else {
         $url = explode("/", filter_var($_GET['page']), FILTER_SANITIZE_URL);
 
         switch ($url[0]) {
             case "accueil":
-                require "views/accueilView.php";
-                break;
-            case "ateliers":
-                if (empty($url[1])) {
-                    $contAtelier->afficherAteliers();
-                } else if ($url[1] === "modifier") {
-                    $contAtelier->modifierAtelier($url[2]);
-                } else if ($url[1] === "modifValider") {
-                    $contAtelier->modifierAtelierValider();
-                } else if ($url[1] === "supprimer") {
-                    $contAtelier->supprimerAtelier($url[2]);
-                } else if ($url[1] === "ajouter") {
-                    $contAtelier->ajoutAtelier();
-                } else if ($url[1] === "valider") {
-                    $contAtelier->ajoutAtelierValidation();
-                } else if ($url[1] === "ateliers") {
-                    $contAtelier->afficherAteliers($url[2]);
-                } else if ($url[1] === "atelier") {
-                    $contAtelier->afficherAtelier($url[2]);
-                } else {
-                    throw new Exception("URL pas bonne");
-                }
+                require "views/Read/accueilView.php";
                 break;
             case "conferences":
                 if (empty($url[1])) {
@@ -68,6 +49,27 @@ try {
                     $contConference->afficherConferences($url[2]);
                 } else if ($url[1] === "conference") {
                     $contConference->afficherConference($url[2]);
+                } else {
+                    throw new Exception("URL pas bonne");
+                }
+                break;
+            case "ateliers":
+                if (empty($url[1])) {
+                    $contAtelier->afficherAteliers();
+                } else if ($url[1] === "modifier") {
+                    $contAtelier->modifierAtelier($url[2]);
+                } else if ($url[1] === "modifValider") {
+                    $contAtelier->modifierAtelierValider();
+                } else if ($url[1] === "supprimer") {
+                    $contAtelier->supprimerAtelier($url[2]);
+                } else if ($url[1] === "ajouter") {
+                    $contAtelier->ajoutAtelier();
+                } else if ($url[1] === "valider") {
+                    $contAtelier->ajoutAtelierValidation();
+                } else if ($url[1] === "ateliers") {
+                    $contAtelier->afficherAteliers($url[2]);
+                } else if ($url[1] === "atelier") {
+                    $contAtelier->afficherAtelier($url[2]);
                 } else {
                     throw new Exception("URL pas bonne");
                 }
@@ -114,6 +116,30 @@ try {
                     throw new Exception("URL pas bonne");
                 }
                 break;
+            case "partenaires":
+                if (empty($url[1])) {
+                    $contPartenaire->afficherPartenaires();
+                } else if ($url[1] === "modifier") {
+                    $contPartenaire->modifierPartenaire($url[2]);
+                } else if ($url[1] === "modifValider") {
+                    $contPartenaire->modifierPartenaireValider();
+                } else if ($url[1] === "supprimer") {
+                    $contPartenaire->supprimerPartenaire($url[2]);
+                } else if ($url[1] === "ajouter") {
+                    $contPartenaire->ajoutPartenaire();
+                } else if ($url[1] === "ajoutValider") {
+                    $contPartenaire->ajoutPartenaireValidation();
+                } else if ($url[1] === "partenaires") {
+                    $contPartenaire->afficherPartenaires($url[2]);
+                } else if ($url[1] === "partenaire") {
+                    $contPartenaire->afficherPartenaire($url[2]);
+                } else {
+                    throw new Exception("URL pas bonne");
+                }
+                break;
+            case "mentionLegales":
+                require "views/Read/mentionLegalView.php";
+                break;
             case "connexion":
                 $userController->afficherConnexion();
                 break;
@@ -129,11 +155,14 @@ try {
             case "inscriptionValider":
                 $userController->inscription();
                 break;
+            case "post_contact":
+                require "controllers/post_contact.php";
+                break;
             default:
                 throw new Exception("URL pas bonne");
         }
     }
 } catch (Exception $e) {
     $message = $e->getMessage();
-    require "views/erreurView.php";
+    require "views/Read/erreurView.php";
 }

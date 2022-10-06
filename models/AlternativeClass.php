@@ -2,12 +2,12 @@
 
 class Alternative
 {
-    private $id;
     private $titre;
     private $image;
     private $theme;
     private $email;
     private $site;
+    private $id;
 
 
     function __construct($titre, $image, $theme, $email, $site, $id)

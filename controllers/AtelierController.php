@@ -17,26 +17,37 @@ class AtelierController
     public function afficherAteliers()
     {
         $listeAteliers = $this->atelierManager->getAtelier();
-        require "views/ateliersView.php";
+        require "views/Read/ateliersView.php";
     }
 
     public function afficherAtelier($id)
     {
         $atelier = $this->atelierManager->getAtelierById($id);
-        require "views/atelierView.php";
+        require "views/Read/atelierView.php";
     }
 
     public function ajoutAtelier()
     {
-        require "views/ajoutAtelierView.php";
+        require "views/Create/ajoutAtelierView.php";
     }
 
     public function ajoutAtelierValidation()
     {
-        $infos = $_FILES['image'];
-        $stockImage = "public/images/";
-        $saveImage = GlobalController::ajoutImage($_POST['titre'], $infos, $stockImage);
-        $resultAjout = $this->atelierManager->ajoutAtelierBD($_POST['titre'], $_POST['materiaux'], $_POST['fabrication'], $_POST['fonctionnement'], $saveImage, $_POST['difficulte'], $_POST['temps'], $_POST['necessite']);
+        $resultAjout = $this->atelierManager->ajoutAtelierBD(
+            $_POST['titre'],
+            $_POST['argument1'],
+            $_POST['argument2'],
+            $_POST['argument3'],
+            $_POST['sourceArg1'],
+            $_POST['sourceArg2'],
+            $_POST['sourceArg3'],
+            $_POST['prix1'],
+            $_POST['prix2'],
+            $_POST['prix3'],
+            $_POST['id'],
+            $_POST['image'],
+            $_POST['id']
+        );
         if (!$resultAjout) {
             throw new Exception("Atelier non ajouter");
         }
@@ -59,8 +70,8 @@ class AtelierController
 
     public function modifierAtelier($id)
     {
-        $atelier = $this->atelierManager->getAtelierById($id);
-        require "views/modifierView.php";
+        $ateliers = $this->atelierManager->getAtelierById($id);
+        require "views/Update/modifierAtelierView.php";
     }
 
     public function modifierAtelierValider()
@@ -71,11 +82,40 @@ class AtelierController
 
         if ($atelierImage['newImage']['size'] !== 0 && $atelierImage['newImage']['size'] !== $atelierInfos['image']) {
             $imgToAdd = $atelierImage['newImage']['name'];
-            $this->atelierManager->modifierAtelierBD($_POST['id'], $atelierInfos['titre'], $atelierInfos['materiaux'], $atelierInfos['fabrication'], $_POST['fonctionnement'], $imgToAdd, $_POST['difficulte'], $_POST['temps'], $_POST['necessite']);
+            $this->atelierManager->modifierAtelierBD(
+
+                $_POST['titre'],
+                $_POST['argument1'],
+                $_POST['argument2'],
+                $_POST['argument3'],
+                $_POST['sourceArg1'],
+                $_POST['sourceArg2'],
+                $_POST['sourceArg3'],
+                $_POST['prix1'],
+                $_POST['prix2'],
+                $_POST['prix3'],
+                $_POST['id'],
+                $_POST['image'],
+                $_POST['id']
+            );
             header("location: ../ateliers");
         } else {
             $imgToAdd = $atelierInfos['image'];
-            $this->atelierManager->modifierAtelierBD($_POST['id'], $atelierInfos['titre'], $atelierInfos['materiaux'], $atelierInfos['fabrication'], $_POST['fonctionnement'], $imgToAdd, $_POST['difficulte'], $_POST['temps'], $_POST['necessite']);
+            $this->atelierManager->modifierAtelierBD(
+                $_POST['titre'],
+                $_POST['argument1'],
+                $_POST['argument2'],
+                $_POST['argument3'],
+                $_POST['sourceArg1'],
+                $_POST['sourceArg2'],
+                $_POST['sourceArg3'],
+                $_POST['prix1'],
+                $_POST['prix2'],
+                $_POST['prix3'],
+                $_POST['id'],
+                $_POST['image'],
+                $_POST['id']
+            );
             header("location: ../atelier");
         }
         GlobalController::manageErrors("success", "Les modifications ont bien été enregistrées");

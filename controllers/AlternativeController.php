@@ -16,18 +16,18 @@ class AlternativeController
     public function afficherAlternatives()
     {
         $listealternatives = $this->alternativeManager->getAlternative();
-        require "views/alternativesView.php";
+        require "views/Read/alternativesView.php";
     }
 
     public function afficherAlternative($id)
     {
         $alternative = $this->alternativeManager->getAlternativeById($id);
-        require "views/alternativeView.php";
+        require "views/Read/alternativeView.php";
     }
 
     public function ajoutAlternative()
     {
-        require "views/ajoutAlternativeView.php";
+        require "views/Update/ajoutAlternativeView.php";
     }
 
     public function ajoutAlternativeValidation()
@@ -37,7 +37,7 @@ class AlternativeController
         $saveImage = GlobalController::ajoutImage($_POST['titre'], $infos, $stockImage);
 
         $resultAjout = $this->alternativeManager->ajoutAlternativeBD($_POST['titre'], $saveImage, $_POST['theme'], $_POST['email'], $_POST['site']);
-        if (!$resultAjout) {
+        if ($resultAjout === false) {
             throw new Exception("Alternative non ajouter");
         }
         GlobalController::manageErrors("success", "Votre alternative a bien été ajouté");
@@ -58,7 +58,8 @@ class AlternativeController
     public function modifierAlternative($id)
     {
         $alternative = $this->alternativeManager->getAlternativeById($id);
-        require "views/modifierAlternativeView.php";
+
+        require "views/Update/modifierAlternativeView.php";
     }
 
     public function modifierAlternativeValider()
@@ -69,11 +70,29 @@ class AlternativeController
 
         if ($alternativeImage['newImage']['size'] !== 0 && $alternativeImage['newImage']['size'] !== $alternativeInfos['image']) {
             $imgToAdd = $alternativeImage['newImage']['name'];
-            $this->alternativeManager->modifierAlternativeBD($_POST['id'], $alternativeInfos['titre'], $alternativeInfos['theme'], $alternativeInfos['email'], $_POST['site'], $imgToAdd);
+            $this->alternativeManager->modifierAlternativeBD(
+
+                $alternativeInfos['titre'],
+                $imgToAdd,
+                $alternativeInfos['theme'],
+                $alternativeInfos['email'],
+                $alternativeInfos['site'],
+                $alternativeInfos['id']
+            );
             header("location: ../alternatives");
         } else {
+
             $imgToAdd = $alternativeInfos['image'];
-            $this->alternativeManager->modifierAlternativeBD($_POST['id'], $alternativeInfos['titre'], $alternativeInfos['theme'], $alternativeInfos['email'], $_POST['site'], $imgToAdd);
+            $this->alternativeManager->modifierAlternativeBD(
+                $alternativeInfos['titre'],
+                $imgToAdd,
+                $alternativeInfos['theme'],
+                $alternativeInfos['email'],
+                $alternativeInfos['site'],
+                $alternativeInfos['id']
+            );
+
+
             header("location: ../alternative");
         }
         GlobalController::manageErrors("success", "Les modifications ont bien été enregistrées");
