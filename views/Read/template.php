@@ -14,7 +14,7 @@
 <body>
     <header>
         <div>
-            <nav class="navbar bg-white navbar-expand-lg mb-5">
+            <nav id="navbarTemplate" class="navbar bg-white navbar-expand-lg mb-5">
                 <div class=" container-fluid">
                     <a class="navbar-brand ms-5" href="#"><img alt="logo NMonde" width="20%;" src="<?= URL ?>public/images/LOGO_LE_NOUVEAU_MONDE.png"></a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -87,62 +87,84 @@
     </div>
 
     <footer>
-        <nav class="navbar navbar-expand-lg navbar border-0" id="footer">
-            <div class="container-fluid">
-                <div class="collapse navbar-collapse">
-                    <div class="col-2"></div>
-                    <ul class="navbar-nav">
-                        <li class="col-3">
-                            <form method="POST" action="post_contact" class="wpcf7-form">
-                                <div class="contact-form-footer">
-                                    <p><span><input type="text" name="nom" size="30" placeholder="Votre nom" required></span></p>
-                                    <p><span><input type="email" name="email1" pattern="^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$" size="30" placeholder="Votre email" required></span></p>
-                                    <p><span><textarea name="votre-message" cols="32" rows="3" placeholder="Votre message" required></textarea></span></p>
-                                    <div><input type="submit" name="submit" value="Envoyer"><span class="ajax-loader"></span></div>
-                                </div>
-                            </form>
-                        </li>
-                        <li class="col-4">
+        <footer id="footer" class="text-white text-center text-lg-start">
+            <!-- Grid container -->
+            <div class="container p-4">
+                <!--Grid row-->
+                <div class="row">
+                    <!--Grid column-->
+                    <div class="col-lg-4 col-md-12 mb-4 mb-md-0">
+                        <h5 class="text-uppercase">Contacter nous</h5>
 
-                        </li>
-                        <li class="nav-item pt-2 col-5 text-center">
-                            <img class="text-center" src="<?= URL ?>public/images/LOGO_LE_NOUVEAU_MONDE.png" alt="logo NMonde" width="60%;">
-                            <span class="visually-hidden">(current)</span>
-                            <p class="fs-6">* Champ obligatoire - <a href="<?= URL ?>mentionLegales"> Mentions légales</a></p>
-                            </a>
-                        </li>
-                        <li class="nav-item col-7 text-end">
-                            <a class="nav-link active" href="<?= URL ?>conferences">Conferences
-                                <span class="visually-hidden">(current)</span>
-                            </a>
-                            <a class="nav-link active" href="<?= URL ?>ateliers">Ateliers
-                                <span class="visually-hidden">(current)</span>
-                            </a>
-                            <a class="nav-link active" href="<?= URL ?>lowtechs">LowTechs
-                                <span class="visually-hidden">(current)</span>
-                            </a>
-                            <a class="nav-link active" href="<?= URL ?>alternatives">Alternatives
-                                <span class="visually-hidden">(current)</span>
-                            </a>
-                            <a class="nav-link active" href="<?= URL ?>partenaires">Partenaires
-                                <span class="visually-hidden">(current)</span>
-                            </a>
-                            <?php
-                            if (!isset($_SESSION['pseudo'])) {
-                            ?>
-                                <a class="nav-link active text-success" href="<?= URL ?>connexion">Connexion</a>
-                            <?php
-                            } else {
-                            ?>
-                                <a class="nav-link active text-danger" href="<?= URL ?>deconnexion">Déconnexion</a>
-                            <?php
-                            }
-                            ?>
-                        </li>
-                    </ul>
-        </nav>
-    </footer>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+                        <form method="POST" action="post_contact" class="wpcf7-form">
+                            <div class="contact-form-footer">
+                                <p><span><input type="text" name="nom" size="30" placeholder="Votre nom" required></span></p>
+                                <p><span><input type="email" name="email1" pattern="^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$" size="30" placeholder="Votre email" required></span></p>
+                                <p><span><textarea name="votre-message" cols="32" rows="3" placeholder="Votre message" required></textarea></span></p>
+                                <div><input type="submit" name="submit" value="Envoyer"><span class="ajax-loader"></span></div>
+                            </div>
+                        </form>
+                    </div>
+                    <!--Grid column-->
+
+                    <!--Grid column-->
+                    <div class="col-lg-4 col-md-6 mb-4 mb-md-0 text-center">
+                        <img class="text-center" src="<?= URL ?>public/images/LOGO_LE_NOUVEAU_MONDE.png" alt="logo NMonde" width="80%;">
+                        <span class="visually-hidden">(current)</span>
+                        <p class="fs-6">* Champ obligatoire - <a href="<?= URL ?>mentionLegales"> Mentions légales</a></p>
+                        </a>
+                        </ul>
+                    </div>
+                    <!--Grid column-->
+
+                    <!--Grid column-->
+                    <div class="col-lg-4 col-md-6 mb-4 mb-md-0 text-end">
+
+                        <ul class="list-unstyled">
+                            <li class="nav-item text-end">
+                                <a class="nav-link active" href="<?= URL ?>conferences">Conferences
+                                    <span class="visually-hidden">(current)</span>
+                                </a>
+                                <a class="nav-link active" href="<?= URL ?>ateliers">Ateliers
+                                    <span class="visually-hidden">(current)</span>
+                                </a>
+                                <a class="nav-link active" href="<?= URL ?>lowtechs">LowTechs
+                                    <span class="visually-hidden">(current)</span>
+                                </a>
+                                <a class="nav-link active" href="<?= URL ?>alternatives">Alternatives
+                                    <span class="visually-hidden">(current)</span>
+                                </a>
+                                <a class="nav-link active" href="<?= URL ?>partenaires">Partenaires
+                                    <span class="visually-hidden">(current)</span>
+                                </a>
+                                <?php
+                                if (!isset($_SESSION['pseudo'])) {
+                                ?>
+                                    <a class="nav-link active text-success" href="<?= URL ?>connexion">Connexion</a>
+                                <?php
+                                } else {
+                                ?>
+                                    <a class="nav-link active text-danger" href="<?= URL ?>deconnexion">Déconnexion</a>
+                                <?php
+                                }
+                                ?>
+                            </li>
+                        </ul>
+                    </div>
+                    <!--Grid column-->
+                </div>
+                <!--Grid row-->
+            </div>
+            <!-- Grid container -->
+
+            <!-- Copyright -->
+            <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+                © 2020 Copyright:
+                <a class="text-white" href="https://mdbootstrap.com/">MDBootstrap.com</a>
+            </div>
+            <!-- Copyright -->
+        </footer>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
 </body>
 
 </html>

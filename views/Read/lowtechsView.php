@@ -5,7 +5,7 @@
     <?php
     foreach ($listelowtechs as $value) {
     ?>
-        <div class="card m-auto mt-3 border border-0 mb-3" style="width: 18rem;">
+        <figure class="card m-auto mt-3 border border-0 mb-3" style="width: 18rem;">
             <img src="<?= URL ?>public/images/lowtech/imagepresentation/<?= $value->getImage() ?>" class="card-img-top p-1" style="height: 18rem; object-fit: cover;" alt="image<?= $value->getTitre() ?>" />
             <div class="card-body">
                 <h5 class="card-title"><a href="<?= URL ?>lowtechs/lowtech/<?= $value->getId() ?>"><?= $value->getTitre() ?></a></h5>
@@ -30,7 +30,7 @@
             <?php
             }
             ?>
-        </div>
+        </figure>
     <?php
     }
     ?>
