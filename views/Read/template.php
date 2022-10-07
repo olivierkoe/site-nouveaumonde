@@ -109,7 +109,7 @@
 
                     <!--Grid column-->
                     <div class="col-lg-4 col-md-6 mb-4 mb-md-0 text-center">
-                        <img class="text-center" src="<?= URL ?>public/images/LOGO_LE_NOUVEAU_MONDE.png" alt="logo NMonde" width="80%;">
+                        <img class="text-center" src="<?= URL ?>public/images/LOGO_LE_NOUVEAU_MONDE.png" alt="logo NMonde" width="60%;">
                         <span class="visually-hidden">(current)</span>
                         <p class="fs-6">* Champ obligatoire - <a href="<?= URL ?>mentionLegales"> Mentions légales</a></p>
                         </a>
@@ -137,17 +137,6 @@
                                 <a class="nav-link active" href="<?= URL ?>partenaires">Partenaires
                                     <span class="visually-hidden">(current)</span>
                                 </a>
-                                <?php
-                                if (!isset($_SESSION['pseudo'])) {
-                                ?>
-                                    <a class="nav-link active text-success" href="<?= URL ?>connexion">Connexion</a>
-                                <?php
-                                } else {
-                                ?>
-                                    <a class="nav-link active text-danger" href="<?= URL ?>deconnexion">Déconnexion</a>
-                                <?php
-                                }
-                                ?>
                             </li>
                         </ul>
                     </div>
