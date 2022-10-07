@@ -1,12 +1,12 @@
 <?php ob_start();
 ?>
 
-<div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
+<div id="carouselExampleFade" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-inner">
         <?php
         foreach ($listealternatives as $value) {
         ?>
-            <div class="carousel-item active">
+            <div class="carousel-item active" data-bs-interval="5000">
                 <img src="<?= URL ?>public/images/alternatives/validation/<?= $value->getImage() ?>" class="d-block w-100" alt="image alternatives">
             </div>
         <?php
@@ -30,13 +30,13 @@
         <?php
         foreach ($listealternatives as $value) {
         ?>
-            <div class="text-center bg-light mt-3 m-auto">
-                <th>
+            <div class="text-center mt-3 justify-content-evenly m-auto">
+                <div>
                     <img src="<?= URL ?>public/images/alternatives/validation/<?= $value->getImage() ?>" class="ms-3" style="width: 200px;" alt="image alternatives">
-                </th>
-                <tr>
-                    <h4><a class="ms-3" href="<?= URL ?>alternatives/alternative/<?= $value->getId() ?>"><?= $value->getTitre() ?></a></h4>
-                </tr>
+                </div>
+                <div>
+                    <h4><a class="ms-3 fs-6" href="<?= URL ?>alternatives/alternative/<?= $value->getId() ?>"><?= $value->getTitre() ?></a></h4>
+                </div>
             </div>
         <?php
         }

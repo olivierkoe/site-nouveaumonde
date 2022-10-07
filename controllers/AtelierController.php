@@ -60,8 +60,6 @@ class AtelierController
     {
         $atelier = $this->atelierManager->getAtelierById($id);
 
-        $dirImage = $atelier->getImage();
-        unlink("public/images/" . $dirImage);
         $this->atelierManager->supprimerAtelierBD($id);
 
         GlobalController::manageErrors("success", "Votre atelier a bien été supprimé");

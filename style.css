@@ -21,6 +21,14 @@ body{
 #footer{
     background-color: #F2F2F2 !important;
 }
+#accueilcontainer{
+    background-image: url(./public/images/LOGO_LE_NOUVEAU_MONDE.png);
+    background-size: cover;
+    background-repeat: center;
+    background-repeat: no-repeat;
+    opacity: 6;
+    background-size: 25%;
+}
 
 #mainAtelier{
 color: #F2F2F2 ;
@@ -38,7 +46,7 @@ background-color: #6FA8BF;
 
 #atelierCard h5{
     height: 20%;
-    color: #81A9B8;
+    color: black;
     text-align: center;
 }
 

@@ -40,9 +40,6 @@
                             <li class="nav-item me-1">
                                 <a class="nav-link" href="<?= URL ?>partenaires">Partenaires</a>
                             </li>
-                            <!-- <li class="nav-item me-1">
-                                <a class="nav-link" href="<?= URL ?>billetterie">Billetterie</a>
-                            </li> -->
                             <?php
                             if (!isset($_SESSION['pseudo'])) {
                             ?>
@@ -93,9 +90,9 @@
         <nav class="navbar navbar-expand-lg navbar border-0" id="footer">
             <div class="container-fluid">
                 <div class="collapse navbar-collapse">
-                    <div class="col-1"></div>
-                    <ul class="navbar-nav ms-5 ">
-                        <li class="col-4">
+                    <div class="col-2"></div>
+                    <ul class="navbar-nav">
+                        <li class="col-3">
                             <form method="POST" action="post_contact" class="wpcf7-form">
                                 <div class="contact-form-footer">
                                     <p><span><input type="text" name="nom" size="30" placeholder="Votre nom" required></span></p>
@@ -105,13 +102,13 @@
                                 </div>
                             </form>
                         </li>
-                        <li class="col-5">
+                        <li class="col-4">
 
                         </li>
                         <li class="nav-item pt-2 col-5 text-center">
                             <img class="text-center" src="<?= URL ?>public/images/LOGO_LE_NOUVEAU_MONDE.png" alt="logo NMonde" width="60%;">
                             <span class="visually-hidden">(current)</span>
-                            <p class="fs-6 mt-1">* Champ obligatoire - <a href="<?= URL ?>mentionLegales"> Mentions légales</a></p>
+                            <p class="fs-6">* Champ obligatoire - <a href="<?= URL ?>mentionLegales"> Mentions légales</a></p>
                             </a>
                         </li>
                         <li class="nav-item col-7 text-end">
@@ -124,10 +121,12 @@
                             <a class="nav-link active" href="<?= URL ?>lowtechs">LowTechs
                                 <span class="visually-hidden">(current)</span>
                             </a>
-                            <a class="nav-link active" href="<?= URL ?>billetterie">Billetterie
+                            <a class="nav-link active" href="<?= URL ?>alternatives">Alternatives
                                 <span class="visually-hidden">(current)</span>
                             </a>
-
+                            <a class="nav-link active" href="<?= URL ?>partenaires">Partenaires
+                                <span class="visually-hidden">(current)</span>
+                            </a>
                             <?php
                             if (!isset($_SESSION['pseudo'])) {
                             ?>

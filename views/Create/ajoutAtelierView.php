@@ -3,7 +3,7 @@
 
 ?>
 <div class="m-2 p-2 border border-dark bg-light rounded-1">
-    <form action="<?= URL ?>atelier/valider" method="POST" enctype="multipart/form-data">
+    <form action="<?= URL ?>ateliers/valider" method="POST" enctype="multipart/form-data">
         <div class="input-group mb-1">
             <label for="titre" class="">Titre</label>
         </div>
