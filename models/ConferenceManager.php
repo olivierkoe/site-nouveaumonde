@@ -24,7 +24,7 @@ class ConferenceManager extends Model
         $req->execute([]);
         $data = $req->fetchAll(PDO::FETCH_ASSOC);
         foreach ($data as $value) {
-            $newconference = new conference($value['titre'], $value["theme"],  $value['invite'], $value['synopsis'], $value['date'],  $value['heure'], $value['image'], $value['id']);
+            $newconference = new conference($value['titre'], $value['invite'],  $value['synopsis'], $value["theme"], $value['date'],  $value['heure'], $value['image'], $value['id']);
             $this->ajoutConference($newconference);
         }
     }

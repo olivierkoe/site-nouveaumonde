@@ -6,8 +6,8 @@
 
     <?php
     foreach ($listeconferences as $value) {
-    ?> <div class="card m-auto mt-1 border border-0 mb-3" style="width: 30rem;">
-            <img src="<?= URL ?>public/images/conferences/<?= $value->getImage() ?>" class="card-img-top" style="height: 30%; object-fit: cover;" alt="image<?= $value->getTitre() ?>">
+    ?> <div class="card m-auto mt-1 border border-0 mb-3" style="width: 49%;">
+            <img src="<?= URL ?>public/images/conferences/<?= $value->getImage() ?>" class="card-img-top" style="height: 60%; object-fit: cover;" alt="image<?= $value->getTitre() ?>">
             <div class="card-body">
                 <h5 class="card-title text-center"><a href="<?= URL ?>conferences/conference/<?= $value->getId() ?>"><?= $value->getTitre() ?></a></h5>
             </div>
@@ -17,20 +17,6 @@
                 <li class="list-group-item">Date de l'événement : <?= $value->getDate() ?></li>
                 <li class="list-group-item">L'heure de l'événement :<?= $value->getHeure() ?></li>
             </ul>
-            <?php
-            if ($_SESSION['role'] === "1") {
-            ?>
-                <div class="card-body d-flex align-items-end justify-content-center">
-                    <div class="text-center">
-                        <form action="<?= URL ?>conferences/supprimer/<?= $value->getId() ?>" method="POST" onsubmit="confirm('Voulez vous vraiment supprimer cette conference ?')">
-                            <button class="btn btn-danger" name="">Supprimer</button>
-                            <a href="<?= URL ?>conferences/modifier/<?= $value->getId() ?>" class="btn btn-warning">Modifier</a>
-                        </form>
-                    </div>
-                </div>
-            <?php
-            }
-            ?>
         </div>
     <?php
     }
@@ -38,7 +24,7 @@
 
 </div>
 <?php
-if ($_SESSION['role'] === "1") {
+if ($_SESSION['role'] === "1" || $_SESSION['role'] === "3") {
 ?>
     <div class="d-flex justify-content-center">
         <a href="<?= URL ?>conferences/ajouter" class="btn btn-success d-block">Ajouter</a>

@@ -22,10 +22,29 @@
                 </label><br />
                 <label for="heure" class="fs-bold mt-3">Heure : <?= $conference->getHeure() ?>
                 </label>
+
             </td>
+
         </tr>
+
     </table>
+    <div class="text-center">
+        <?php
+        if ($_SESSION['role'] === "1" || $_SESSION['role'] === "3") {
+        ?>
+            <a href="<?= URL ?>conferences/modifier/<?= $conference->getId() ?>" class="btn btn-warning mb-3 mt-5">Modifier</a>
+            <?php
+            if ($_SESSION['role'] === "1") {
+            ?>
+                <a href="<?= URL ?>conferences/supprimer/<?= $conference->getId() ?>" class="btn btn-danger mb-3 mt-5">supprimer</a>
+        <?php
+            }
+        }
+        ?>
+    </div>
 </div>
+
+
 <?php
 $titre = $conference->getTitre();
 $content = ob_get_clean();

@@ -72,13 +72,23 @@
                 }
                 ?>
             </div>
-            <div class="d-flex flex-row justify-content-center mt-3">
-                <p class="align-middle"><a href="<?= URL ?>ateliers/modifier/<?= $value->getId() ?>" class="btn btn-warning me-3">Modifier</a></p>
-                <p class="align-middle">
-                <form action="<?= URL ?>ateliers/supprimer/<?= $value->getId() ?>" method="POST" onsubmit="confirm('Voulez vous vraiment supprimer cette atelier ?')">
-                    <button class="btn btn-danger" name="">Supprimer</button>
-                </form>
-            </div>
+            <?php
+            if ($_SESSION['role'] === "1" || $_SESSION['role'] === "3") {
+            ?>
+                <div class="d-flex flex-row justify-content-center mt-3">
+                    <p class="align-middle"><a href="<?= URL ?>ateliers/modifier/<?= $value->getId() ?>" class="btn btn-warning me-3">Modifier</a></p>
+                    <?php
+                    if ($_SESSION['role'] === "1") {
+                    ?>
+                        <p class="align-middle">
+                        <form action="<?= URL ?>ateliers/supprimer/<?= $value->getId() ?>" method="POST" onsubmit="confirm('Voulez vous vraiment supprimer cette atelier ?')">
+                            <button class="btn btn-danger" name="">Supprimer</button>
+                        </form>
+                <?php
+                    }
+                }
+                ?>
+                </div>
         </div>
 
 

@@ -11,12 +11,22 @@
                 <label class="me-5" for="theme">Thème : <?= $alternative->getTheme() ?></label>
                 <label class="me-5" for="site">Site internet : <?= $alternative->getSite() ?></label>
                 <label for="email">Email adresse : <?= $alternative->getEmail() ?></label>
-                <div class="d-flex flex-row flex-wrap mt-3">
-                    <a href="<?= URL ?>alternatives/modifier/<?= $alternative->getId() ?>" class="btn btn-warning mb-3 me-5">Modifier</a>
-                    <form action="<?= URL ?>alternatives/supprimer/<?= $alternative->getId() ?>" method="POST" onsubmit="confirm('Voulez vous vraiment supprimer cette alternative ?')">
-                        <button class="btn btn-danger" name="supAlternative">Supprimer</button>
-                    </form>
-                </div>
+                <?php
+                if ($_SESSION['role'] === "1" || $_SESSION['role'] === "3") {
+                ?>
+                    <div class="d-flex flex-row flex-wrap mt-3">
+                        <a href="<?= URL ?>alternatives/modifier/<?= $alternative->getId() ?>" class="btn btn-warning mb-3 me-5">Modifier</a>
+                        <?php
+                        if ($_SESSION['role'] === "1") {
+                        ?>
+                            <form action="<?= URL ?>alternatives/supprimer/<?= $alternative->getId() ?>" method="POST" onsubmit="confirm('Voulez vous vraiment supprimer cette alternative ?')">
+                                <button class="btn btn-danger" name="supAlternative">Supprimer</button>
+                            </form>
+                    <?php
+                        }
+                    }
+                    ?>
+                    </div>
             </td>
         </tr>
     </table>

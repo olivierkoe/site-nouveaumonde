@@ -1,7 +1,6 @@
 <?php ob_start() ?>
 <?php
-var_dump($_POST);
-// var_dump($lowtech);
+
 ?>
 <div class="m-2 p-2 m-3" id="principal">
     <table class="table">

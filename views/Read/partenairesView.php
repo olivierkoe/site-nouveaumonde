@@ -4,11 +4,12 @@
 <div class="container card d-flex flex-row flex-wrap ps-3 mt-3 bg-transparent border border-0" id="principal">
     <?php
     foreach ($listePartenaires as $value) {
+        var_dump($value->getSiteWeb())
     ?>
         <div class="card d-flex flex-row flex-wrap mt-3 border border-1 mb-3 m-auto p-3" style="width: 45%;">
 
             <div class="card-body col-8" style=" height: 70%">
-                <h5 class="card-title"><a href="<?= $value->getEmail() ?>"><?= $value->getTitre() ?></a></h5>
+                <h5 class="card-title"><?= $value->getTitre() ?></h5>
                 <P class="list-group-item border border-0"><?= $value->getDescription() ?></p>
 
             </div>
@@ -19,20 +20,27 @@
                 <div class="card-body d-flex align-items-end justify-content-center">
                     <ul class="list-group list-group-flush">
                         <div class="d-flex flex-column">
-                            <li class="list-group-item border border-0"><?= $value->getSiteWeb() ?></li>
+                            <li class="list-group-item border border-0"><a href="hhtps://<?= $value->getSiteWeb() ?>"><?= $value->getSiteWeb() ?></a></li>
                             <li class="list-group-item border border-0"><?= $value->getEmail() ?></li>
                         </div>
                     </ul>
                 </div>
                 <?php
-                if ($_SESSION['role'] === "1") {
+                if ($_SESSION['role'] === "1" || $_SESSION['role'] === "3") {
                 ?>
                     <div class="card-body d-flex align-items-end justify-content-center">
                         <div class="text-end">
                             <form action="<?= URL ?>partenaires/supprimer/<?= $value->getId() ?>" method="POST" onsubmit="confirm('Voulez vous vraiment supprimer cette atelier ?')">
-                                <button class="btn btn-danger">Supprimer</button>
                                 <a href="<?= URL ?>partenaires/modifier/<?= $value->getId() ?>" class="btn btn-warning">Modifier</a>
+                                <?php
+                                if ($_SESSION['role'] === "1") {
+                                ?>
+                                    <button class="btn btn-danger">Supprimer</button>
+
                             </form>
+                        <?php
+                                }
+                        ?>
                         </div>
                     </div>
                 <?php

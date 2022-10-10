@@ -25,11 +25,9 @@
 
 <div id="" class="d-flex flex-wrap flex-row">
     <?php
-    if ($_SESSION['role'] === "1") {
-    ?>
-        <?php
+    if ($_SESSION['role'] === "1" || $_SESSION['role'] === "3") {
         foreach ($listealternatives as $value) {
-        ?>
+    ?>
             <div class="text-center mt-3 justify-content-evenly m-auto">
                 <div>
                     <img src="<?= URL ?>public/images/alternatives/validation/<?= $value->getImage() ?>" class="ms-3" style="width: 200px;" alt="image alternatives">
@@ -41,13 +39,13 @@
         <?php
         }
         ?>
-
 </div>
 <div class="text-center">
     <a href="<?= URL ?>alternatives/ajouter" class="btn btn-success mb-3 mt-5">Ajouter</a>
 </div>
 <?php
     }
+
     $titre = "Alternatives";
     $content = ob_get_clean();
     require_once "views/Read/template.php";

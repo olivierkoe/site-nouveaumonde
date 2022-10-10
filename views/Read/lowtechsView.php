@@ -17,19 +17,24 @@
             </ul>
 
             <?php
-            if ($_SESSION['role'] === "1") {
+            if ($_SESSION['role'] === "1" || $_SESSION['role'] === "3") {
             ?>
                 <div class="card-body">
                     <div class="text-center">
                         <form action="<?= URL ?>lowtechs/supprimer/<?= $value->getId() ?>" method="POST" onsubmit="confirm('Voulez vous vraiment supprimer cette atelier ?')">
-                            <button class="btn btn-danger">Supprimer</button>
                             <a href="<?= URL ?>lowtechs/modifier/<?= $value->getId() ?>" class="btn btn-warning">Modifier</a>
+                            <?php
+                            if ($_SESSION['role'] === "1") {
+                            ?>
+
+                                <button class="btn btn-danger">Supprimer</button>
                         </form>
                     </div>
                 </div>
-            <?php
-            }
-            ?>
+        <?php
+                            }
+                        }
+        ?>
         </figure>
     <?php
     }

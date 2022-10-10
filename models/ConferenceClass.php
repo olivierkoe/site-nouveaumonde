@@ -3,23 +3,23 @@
 class Conference
 {
     private $titre;
+    private $invite;
     private $theme;
     private $date;
-    private $invite;
     private $synopsis;
     private $heure;
     private $image;
     private $id;
 
 
-    function __construct($titre, $theme, $date, $invite, $synopsis, $heure, $image, $id)
+    function __construct($titre, $invite, $synopsis, $theme, $date, $heure, $image, $id)
     {
 
         $this->titre = $titre;
-        $this->theme = $theme;
-        $this->date = $date;
         $this->invite = $invite;
+        $this->theme = $theme;
         $this->synopsis = $synopsis;
+        $this->date = $date;
         $this->heure = $heure;
         $this->image = $image;
         $this->id = $id;
