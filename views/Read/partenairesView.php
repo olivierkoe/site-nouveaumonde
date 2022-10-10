@@ -4,7 +4,6 @@
 <div class="container card d-flex flex-row flex-wrap ps-3 mt-3 bg-transparent border border-0" id="principal">
     <?php
     foreach ($listePartenaires as $value) {
-        var_dump($value->getSiteWeb())
     ?>
         <div class="card d-flex flex-row flex-wrap mt-3 border border-1 mb-3 m-auto p-3" style="width: 45%;">
 
