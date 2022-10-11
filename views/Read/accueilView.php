@@ -1,6 +1,6 @@
 <?php ob_start() ?>
 
-<div id="accueilcontainer" class="container bg-light p-3 mb-5 text-center fs-3 mt-5" style="height: 600px">
+<div id="accueilcontainer" class="container bg-light p-5 mb-5 text-center fs-3 mt-5" style="height: 600px">
     <h1 class="mb-5">Le nouveau Monde Montpellier</h1>
     <p>Notre mouvement vise 3 objectifs : </p>
     <p>- Faire connaître les alertnatives concrètes et locales.</p>

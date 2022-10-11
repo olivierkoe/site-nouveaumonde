@@ -28,6 +28,7 @@
         </tr>
 
     </table>
+
     <div class="text-center">
         <?php
         if ($_SESSION['role'] === "1" || $_SESSION['role'] === "3") {
@@ -42,8 +43,11 @@
         }
         ?>
     </div>
-</div>
 
+</div>
+<div class="d-flex justify-content-center">
+    <a href="<?= URL ?>conferences/" class="btn btn-primary d-block col-3">retour</a>
+</div>
 
 <?php
 $titre = $conference->getTitre();

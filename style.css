@@ -38,10 +38,10 @@ background-color: #6FA8BF;
 }
 
 #mainAtelier{
-color: #F2F2F2 ;
-/* color: #6FA8BF ; */
-background-color: #6FA8BF;
-/* background-color: #F2F2F2; */
+/* color: #F2F2F2 ; */
+color: #6FA8BF ;
+/* background-color: #6FA8BF; */
+background-color: #F2F2F2;
 }
 
 #atelierContainer h2{
@@ -62,3 +62,10 @@ background-color: #6FA8BF;
         color: black;
     background-color: #F2F2F2 
 }
+
+.invalid{
+color: red;        
+}
+.valid{
+    color: green;        
+    }

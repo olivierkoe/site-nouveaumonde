@@ -50,10 +50,14 @@
                     }
                     ?>
                 </div>
-                <label for="source">Source : <?= $lowtech->getSource() ?></label>
+                <label for="source">Source : <a href="<?= $lowtech->getSource() ?>"> <?= $lowtech->getSource() ?></a></label>
+
             </td>
         </tr>
     </table>
+    <div class="d-flex justify-content-center">
+        <a href="<?= URL ?>lowtechs/" class="btn btn-primary d-block col-3">retour</a>
+    </div>
 </div>
 
 <?php

@@ -68,7 +68,7 @@ class UserController
     public function inscription()
     {
         if (!empty($_POST['pseudoIn']) || !empty($_POST['mailIn']) || !empty($_POST['passwordIn']) || !empty($_POST['password2In'])) {
-            if ($_POST['passwordIn'] === $_POST['password2In']) {
+            if ($_POST['password'] === $_POST['password2']) {
                 $password = password_hash($_POST['passwordIn'], PASSWORD_DEFAULT);
                 $result = $this->userManager->addUserDB($_POST['pseudoIn'], $_POST['nom'], $_POST['prenom'], $_POST['mailIn'], $password);
                 if ($result) {

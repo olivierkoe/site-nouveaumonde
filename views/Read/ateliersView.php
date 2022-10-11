@@ -70,6 +70,7 @@
                     </article>
                 <?php
                 }
+
                 ?>
             </div>
             <?php
@@ -84,21 +85,22 @@
                         <form action="<?= URL ?>ateliers/supprimer/<?= $value->getId() ?>" method="POST" onsubmit="confirm('Voulez vous vraiment supprimer cette atelier ?')">
                             <button class="btn btn-danger" name="">Supprimer</button>
                         </form>
-                <?php
+                    <?php
                     }
-                }
-                ?>
+                    ?>
                 </div>
+            <?php
+            }
+            ?>
         </div>
-
-
     <?php
     }
     ?>
-    <div>
-        <a href="<?= URL ?>ateliers/ajouter" class="btn btn-success d-block col-4 m-auto mt-3">Ajouter</a>
-    </div>
+    <a href="<?= URL ?>ateliers/ajouter" class="btn btn-success d-block col-4 m-auto mt-3 mb-3">Ajouter</a>
+
 </div>
+
+
 <?php
 
 $titre = "Ateliers";

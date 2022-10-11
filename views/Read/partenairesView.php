@@ -19,7 +19,7 @@
                 <div class="card-body d-flex align-items-end justify-content-center">
                     <ul class="list-group list-group-flush">
                         <div class="d-flex flex-column">
-                            <li class="list-group-item border border-0"><a href="hhtps://<?= $value->getSiteWeb() ?>"><?= $value->getSiteWeb() ?></a></li>
+                            <li class="list-group-item border border-0"><a href="<?= $value->getSiteWeb() ?>"><?= $value->getSiteWeb() ?></a></li>
                             <li class="list-group-item border border-0"><?= $value->getEmail() ?></li>
                         </div>
                     </ul>
