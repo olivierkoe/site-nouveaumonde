@@ -1,7 +1,8 @@
 <?php
-
+// on déclare une class Alternative
 class Alternative
 {
+    // on définis ce qui composse cette class
     private $titre;
     private $image;
     private $theme;
@@ -9,7 +10,7 @@ class Alternative
     private $site;
     private $id;
 
-
+    //on construit cette class
     function __construct($titre, $image, $theme, $email, $site, $id)
     {
         $this->titre = $titre;
@@ -20,59 +21,71 @@ class Alternative
         $this->id = $id;
     }
 
+    // permet de récuperé le titre de cette class
     public function getTitre()
     {
         return $this->titre;
     }
 
+    // permet de récuperé l'image de cette class
     public function getImage()
     {
         return $this->image;
     }
 
+    // permet de récuperé le thème de cette class
     public function getTheme()
     {
         return $this->theme;
     }
 
+    // permet de récuperé l'amail de cette class
     public function getEmail()
     {
         return $this->email;
     }
 
+    // permet de récuperé l'adresse du site de cette class
     public function getSite()
     {
         return $this->site;
     }
 
+    // permet de récuperé l'id de cette class
     public function getId()
     {
         return $this->id;
     }
 
+    // permet de d'affecté un titre à cette class
     public function setTitre($titre)
     {
         $this->titre = $titre;
         return $this;
     }
 
+    // permet de d'affecté une image à cette class
     public function setImage($image)
     {
         $this->image = $image;
         return $this;
     }
 
+    // permet de d'affecté un thème à cette class
     public function setTheme($theme)
     {
         $this->theme = $theme;
         return $this;
     }
+
+    // permet de d'affecté un email à cette class
     public function setEmail($email)
     {
         $this->email = $email;
         return $this;
     }
 
+    // permet de d'affecté une adresse de site à cette class
     public function setSite($site)
     {
         $this->site = $site;

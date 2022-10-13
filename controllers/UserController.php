@@ -52,7 +52,7 @@ class UserController
     public function deconnexion()
     {
         session_destroy();
-        header("location:" . URL);
+        header("location:" . URL . "accueil");
     }
 
     public function afficherInscription()

@@ -11,11 +11,13 @@ class AlternativeManager extends Model
         $this->alternatives[] = $alternative;
     }
 
-    public function getAlternative()
+    // recupère toutes le alternatives
+    public function getAlternatives()
     {
         return $this->alternatives;
     }
 
+    // recupère toutes le alternatives
     public function chargementAlternatives()
     {
         $db = $this->getBdd();

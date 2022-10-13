@@ -1,19 +1,32 @@
+<!-- Enclenche la temporisation de sortie -->
 <?php ob_start() ?>
 
-<div id="accueilcontainer" class="container bg-light p-5 mb-5 text-center fs-3 mt-5" style="height: 600px">
-    <h1 class="mb-5">Le nouveau Monde Montpellier</h1>
-    <p>Notre mouvement vise 3 objectifs : </p>
-    <p>- Faire connaître les alertnatives concrètes et locales.</p>
-    <p>- Rendre l'espace public et la parole politique au citoyen.</p>
-    <p>- Créer du lien pour rassembler au-delà des clivages.</p>
+<div id="accueilcontainer" class="container bg-light p-5 mb-5 text-center fs-3 mt-5" style="height: 60%">
 
-    <p></p>
-    <p>Comment ? </p>
-    <p> En proposant des espaces et actions citoyennes, positives et originales : Apéros citoyens, ateliers de rencontre, semaine sans smartphone, collagede citations inspirantes, annimation de ciné/débat, stand dans les festivals</p>
+    <!-- affiche le titre de la présentation -->
+    <h1 class="mt-5 mb-5"><?= $fullPresentation[0]->getTitre() ?> </h1>
+    <!-- affiche les differents éléments du descriptif stocker en base de données-->
+    <?php foreach ($descriptionPresentation as $value) {
+    ?>
+        <p class=""><?= $value ?></p>
+    <?php
+    }  ?>
+
 </div>
+<?php
+// si l'utilisateur à le rôle 1 ou le rôle 3 il pouras avoir accés au bouton modifier
+if ($_SESSION['role'] === "1" || $_SESSION['role'] === "3") {
+?>
+    <div class="text-center">
+        <a href="<?= URL ?>presentation/modifier" class="btn btn-warning">Modifier</a>
+    </div>
 
 <?php
+}
 
 $titre = "Accueil";
+
+// Lit le contenu courant du tampon de sortie puis l'efface
 $content = ob_get_clean();
+// permet d'afficher la navbar ainssi que le footer
 require_once "views/Read/template.php";

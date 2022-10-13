@@ -63,7 +63,7 @@
             if (isset($_SESSION['pseudo'])) {
             ?>
                 <div class="col-8 m-auto text-center">
-                    <p class="fs-5">Bienvenu <?= $_SESSION['pseudo'] ?> vous etes sur la page des : <?= $titre ?></p>
+                    <p class="fs-5">Bienvenu <?= $_SESSION['pseudo'] ?> vous etes sur la page : <?= $titre ?></p>
                 </div>
                 <div class="container" height="800px">
                 </div>
@@ -88,14 +88,10 @@
 
     <footer>
         <footer id="footer" class="text-white text-center text-lg-start">
-            <!-- Grid container -->
             <div class="container p-4">
-                <!--Grid row-->
                 <div class="row">
-                    <!--Grid column-->
                     <div class="col-lg-4 col-md-12 mb-4 mb-md-0">
                         <h5 class="text-uppercase">Contacter nous</h5>
-
                         <form method="POST" action="post_contact" class="wpcf7-form">
                             <div class="contact-form-footer">
                                 <p><span><input type="text" name="nom" size="30" placeholder="Votre nom" required></span></p>
@@ -105,21 +101,12 @@
                             </div>
                         </form>
                     </div>
-                    <!--Grid column-->
-
-                    <!--Grid column-->
                     <div class="col-lg-4 col-md-6 mb-4 mb-md-0 text-center">
-                        <img class="text-center" src="<?= URL ?>public/images/LOGO_LE_NOUVEAU_MONDE.png" alt="logo NMonde" width="60%;">
+                        <img class="text-center" src="<?= URL ?>public/images/LOGO_LE_NOUVEAU_MONDE.png" alt="logo NMonde" width="70%;">
                         <span class="visually-hidden">(current)</span>
-                        <p class="fs-6">* Champ obligatoire - <a href="<?= URL ?>mentionLegales"> Mentions légales</a></p>
-                        </a>
-                        </ul>
+
                     </div>
-                    <!--Grid column-->
-
-                    <!--Grid column-->
                     <div class="col-lg-4 col-md-6 mb-4 mb-md-0 text-end">
-
                         <ul class="list-unstyled">
                             <li class="nav-item text-end">
                                 <a class="nav-link active" href="<?= URL ?>conferences">Conferences
@@ -140,18 +127,12 @@
                             </li>
                         </ul>
                     </div>
-                    <!--Grid column-->
                 </div>
-                <!--Grid row-->
             </div>
-            <!-- Grid container -->
-
-            <!-- Copyright -->
             <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-                © 2020 Copyright:
-                <a class="text-white" href="https://mdbootstrap.com/">MDBootstrap.com</a>
+                <p class="fs-6">* Champ obligatoire - <a href="<?= URL ?>mentionLegales"> Mentions légales </a></p>
+                <p> © 2022 Copyright: <a class="text-white" href="#">NouveauMondeMontpellier</a></p>
             </div>
-            <!-- Copyright -->
         </footer>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
         <script src="<?= URL ?>js/script.js"></script>

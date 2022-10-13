@@ -41,11 +41,18 @@
         ?>
 </div>
 <div class="text-center">
-    <a href="<?= URL ?>alternatives/ajouter" class="btn btn-success mb-3 mt-5">Ajouter</a>
-</div>
+    <a href="<?= URL ?>alternatives/ajouter" class="btn btn-success mb-3 mt-5 ">Ajouter</a>
 <?php
     }
+?>
+</div>
 
-    $titre = "Alternatives";
-    $content = ob_get_clean();
-    require_once "views/Read/template.php";
+
+
+
+<?php
+
+
+$titre = "Alternatives";
+$content = ob_get_clean();
+require_once "views/Read/template.php";

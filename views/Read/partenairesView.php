@@ -1,14 +1,14 @@
 <?php ob_start();
 
 ?>
-<div class="container card d-flex flex-row flex-wrap ps-3 mt-3 bg-transparent border border-0" id="principal">
+<div class="container card d-flex flex-row flex-wrap ps-3 mt-3 bg-transparent border border-0" id="partenaireContainer">
     <?php
     foreach ($listePartenaires as $value) {
     ?>
-        <div class="card d-flex flex-row flex-wrap mt-3 border border-1 mb-3 m-auto p-3" style="width: 45%;">
+        <div id="partenaireCard" class="card d-flex flex-row flex-wrap mt-3 border border-1 mb-3 m-auto p-3" style="width: 45%;">
 
             <div class="card-body col-8" style=" height: 70%">
-                <h5 class="card-title"><?= $value->getTitre() ?></h5>
+                <h5 id="partenaireTitre" class="card-title"><?= $value->getTitre() ?></h5>
                 <P class="list-group-item border border-0"><?= $value->getDescription() ?></p>
 
             </div>
