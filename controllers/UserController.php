@@ -27,7 +27,9 @@ class UserController
     {
         if (!empty($_POST['pseudo']) || !empty($_POST['password'])) {
             $user = $this->userManager->getUserByPseudoDB($_POST['pseudo']);
-
+            var_dump($_POST['password']);
+            var_dump($user->getPassword());
+            exit;
             if ($user) {
                 if (password_verify($_POST['password'], $user->getPassword())) {
                     $_SESSION['pseudo'] = $user->getPseudo();
@@ -67,7 +69,7 @@ class UserController
 
     public function inscription()
     {
-        if (!empty($_POST['pseudoIn']) || !empty($_POST['mailIn']) || !empty($_POST['passwordIn']) || !empty($_POST['password2In'])) {
+        if (!empty($_POST['pseudoIn']) || !empty($_POST['mailIn']) || !empty($_POST['password']) || !empty($_POST['password2'])) {
             if ($_POST['password'] === $_POST['password2']) {
                 $password = password_hash($_POST['passwordIn'], PASSWORD_DEFAULT);
                 $result = $this->userManager->addUserDB($_POST['pseudoIn'], $_POST['nom'], $_POST['prenom'], $_POST['mailIn'], $password);
