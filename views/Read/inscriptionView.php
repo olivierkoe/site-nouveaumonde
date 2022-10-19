@@ -4,7 +4,7 @@
     <form action="<?= URL ?>inscriptionValider" method="POST">
         <div class="mb-3">
             <label for="pseudo" class="form-label col-6">Pseudo</label>
-            <input type="text" class="pseudo" id="pseudo" name="pseudoIn" required>
+            <input type="text" class="pseudo" id="pseudo" name="pseudo" required>
         </div>
         <div class="mb-3">
             <label for="nom" class="form-label col-6">Nom</label>
@@ -16,7 +16,7 @@
         </div>
         <div class="mb-3">
             <label for="mail" class="form-label col-6">Mail</label>
-            <input type="mail" class="mail" id="mail" name="mailIn" required>
+            <input type="mail" class="mail" id="mail" name="mail" required>
         </div>
         <div class="mb-3">
             <label for="password" class="form-label col-6">Password (8 characters minimum):</label>

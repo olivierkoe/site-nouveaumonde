@@ -7,7 +7,7 @@
     <?php
     foreach ($listeconferences as $value) {
     ?> <div class="card m-auto mt-1 border border-0 mb-3" style="width: 49%;">
-            <img src="<?= URL ?>public/images/conferences/<?= $value->getImage() ?>" class="card-img-top" style="height: 60%; object-fit: cover;" alt="image<?= $value->getTitre() ?>">
+            <img id="imgConference" src="<?= URL ?>public/images/conferences/<?= $value->getImage() ?>" class="card-img-top" style="height: 30%; object-fit: cover;" alt="image<?= $value->getTitre() ?>">
             <div class="card-body">
                 <h5 class="card-title text-center"><a href="<?= URL ?>conferences/conference/<?= $value->getId() ?>"><?= $value->getTitre() ?></a></h5>
             </div>

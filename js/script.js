@@ -1,4 +1,6 @@
 let password = document.querySelector("#password");
+let password2 = document.querySelector("#password2");
+
 password.addEventListener("input", checkpass);
 //cette fonction vérifie le mot de pass
 function checkpass() {
@@ -7,6 +9,7 @@ function checkpass() {
   // on récupère ce qui as été saisi
   // let mdp = this.value;
   let mdp = password.value;
+  let mdp2 = password2.value;
   // on vas rechercher les éléments dont on as besoin
   let minuscule = document.querySelector("#minuscule");
   let majuscule = document.querySelector("#majuscule");
