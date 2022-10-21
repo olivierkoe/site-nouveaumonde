@@ -9,8 +9,9 @@ class User
     private $mail;
     private $password;
     private $role;
+    private $image;
 
-    public function __construct($id, $pseudo, $nom, $prenom, $mail, $password, $role)
+    public function __construct($id, $pseudo, $nom, $prenom, $mail, $password, $role, $image)
     {
         $this->id = $id;
         $this->pseudo = $pseudo;
@@ -19,8 +20,10 @@ class User
         $this->mail = $mail;
         $this->password = $password;
         $this->role = $role;
+        $this->image = $image;
     }
 
+    // GET 
     /**
      * Get the value of id
      */
@@ -75,5 +78,54 @@ class User
     public function getRole()
     {
         return htmlspecialchars($this->role);
+    }
+
+    public function getImage()
+    {
+        return htmlspecialchars($this->image);
+    }
+
+    // SET
+
+    public function setPseudo($pseudo)
+    {
+        $this->pseudo = $pseudo;
+        return $this;
+    }
+
+    public function setNom($nom)
+    {
+        $this->nom = $nom;
+        return $this;
+    }
+
+    public function setPrenom($prenom)
+    {
+        $this->prenom = $prenom;
+        return $this;
+    }
+
+    public function setMail($mail)
+    {
+        $this->mail = $mail;
+        return $this;
+    }
+
+    public function setPassword($password)
+    {
+        $this->password = $password;
+        return $this;
+    }
+
+    public function setRole($role)
+    {
+        $this->role = $role;
+        return $this;
+    }
+
+    public function setImage($image)
+    {
+        $this->image = $image;
+        return $this;
     }
 }

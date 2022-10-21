@@ -31,7 +31,6 @@ class LowtechManager extends Model
 
     public function getLowtechById($id)
     {
-
         foreach ($this->lowtechs as $value) {
             if ($value->getId() == $id) {
                 return $value;

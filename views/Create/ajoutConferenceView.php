@@ -39,4 +39,4 @@
 <?php
 $titre = "Ajout conférence";
 $content = ob_get_clean();
-require_once "views/template.php";
+require_once "views/Read/template.php";

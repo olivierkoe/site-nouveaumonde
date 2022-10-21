@@ -12,6 +12,8 @@ body{
     font-family: Gothic A1;
 }
 
+/* TEMPLATE */
+
 /* gére l'affichage du titre du template */
 #titeTemplate{
     color: black;
@@ -28,6 +30,13 @@ body{
     color: #F2F1DC !important;
 }
 
+/* gére la couleur des bouton de la navbar */
+#navbarTemplate button{
+    background-color: #6FA8BF;
+    }
+
+/* ACCUEIL */
+
 /* gére la couleur, la taille, la disposition,l'opacité du background de page d'accueil */
 #accueilcontainer{
     background-image: url(./public/images/LOGO_LE_NOUVEAU_MONDE.png);
@@ -38,10 +47,26 @@ body{
     background-size: 25%;
 }
 
-/* gére la couleur des bouton de la navbar */
-#navbarTemplate button{
-background-color: #6FA8BF;
+/* CONFERENCES */
+#confCard{
+    width: 49%;
+    margin-top: 5rem;
+    margin-bottom: 5rem;
+    margin: auto;
 }
+#confCard img{
+height: 300px;
+object-fit: contain;
+}
+
+#principal{
+    margin-bottom: 2rem;
+    margin-top: 2rem;
+    background: transparent;
+
+}
+
+/* ATELIER */
 
 /* gére la couleur du text et du background des cards Atelier */
 #mainAtelier{
@@ -49,6 +74,9 @@ background-color: #6FA8BF;
 color: #6FA8BF ;
 /* background-color: #6FA8BF; */
 background-color: #F2F2F2;
+margin: auto;
+width: 100%;
+margin-bottom: 2rem;
 }
 
 /* gére l'alignement du titre du container des ateliers */
@@ -62,20 +90,35 @@ background-color: #F2F2F2;
 }
 
 /* gére la hauteur, la position et la couleur du text des titres des cards Atelier */
+
+
+/* gére la hauteur, la couleur du text et du background des cards Atelier */
+#atelierCard{
+    color: black;
+    background-color: #F2F2F2;
+    flex-wrap: nowrap;
+    padding-left: 3rem;
+    margin-bottom: 1rem;
+}
+
 #atelierCard h5{
     height: 20%;
     color: black;
     text-align: center;
+    margin-top: 3rem;
+
 }
 
-/* gére la hauteur, la couleur du text et du background des cards Atelier */
-#atelierCard{
-    height: 50%;
-    color: black;
-    background-color: #F2F2F2; 
-}
 #atelierCard article{
     width: 49%;
+    margin-bottom: 3rem;
+}
+
+#btnAtelierCard {
+display: flex;
+flex: row;
+justify-content: center;
+margin-top: 1rem;
 }
 
 /* gére la coleur du background de la card de connexion */
@@ -110,31 +153,86 @@ color: red;
     #partenaireContainer{
         /* la taille du texte passe à 6 pixels */
     font-size: 6px;
+    flex-wrap: nowrap;
     }
 
 } 
 
 /* lorque la résolution de l'écran passe sous les 450 pixels */
 @media (max-width: 450px){
+
     #partenaireTitre{
         /* la taille du titre passe à 10 pixels */
         font-size: 10px;
     }
+
     #partenaireCard{
     /* la taille du text passe à 3 pixels */
-    font-size: 3px;
+    font-size: 6px;
     /* lawidth de la card passe a 100% */
-    width: 100%;
+    width: 90%;
+    height: 30%;
+    padding-left: 0%;
+    flex: auto;
     }
+
+    #partenaireCard P{
+    padding: 0px;
+    }
+
+    #partenaireCard li{
+        /* la taille du text passe à 3 pixels */
+        font-size: 10px;
+        }
+
+    #partenaireContainer{
+    width: 90%;
+    }
+
     #cardBodyPartenaire{
     flex-wrap: nowrap;
     }
+
+    #cardBodyPartenaire p{
+        font-size: 10px;
+        flex: none;
+    }
+
+    #partenaireCardLink{
+        font-size: 16px;
+    }
+
     #imgLogo{
         text-align: center;
     }
-    
+
+    #imgLogo img{
+        width: 100%;
+    }
+
     #navposition{
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
+    width: 80%;
+    text-align: center;
+    }
+
+/* ATELIER */
+    #atelierCard{
+        margin-bottom: 3rem;
+        padding-left: 0rem;
+    }
+    
+    #atelierCard h5{
+        height: 20%;
+        color: black;
+        text-align: center;
+        margin-top: 3rem;
+    
+    }
+    
+    #atelierCard article{
+        width: 49%;
+        margin-bottom: 3rem;
     }
 
     #mainAtelier h5{
@@ -148,6 +246,17 @@ color: red;
         width: 100%;
         margin: 0%;
     }
+
+    #btnAtelierCard{
+        display: block;
+        margin: auto;
+    }
+
+    #btnAtelierCard button{
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    }
+
     #legendeProgress p{
         font-size: 7px;
     }
@@ -156,5 +265,12 @@ color: red;
     }
     #textCard p{
         font-size: 5px;
+    }
+
+/* CONFERENCES */
+    #confCard{
+        width: 100%;
+        margin-bottom: 1rem !important;
+        margin: auto;
     }
 }

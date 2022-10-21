@@ -2,12 +2,12 @@
 
 ?>
 
-<div class="container card d-flex flex-row flex-wrap ps-3 mt-3 bg-transparent border border-0" id="principal">
+<div class="container card d-flex flex-row flex-wrap border border-0" id="principal">
 
     <?php
     foreach ($listeconferences as $value) {
-    ?> <div class="card m-auto mt-1 border border-0 mb-3" style="width: 49%;">
-            <img id="imgConference" src="<?= URL ?>public/images/conferences/<?= $value->getImage() ?>" class="card-img-top" style="height: 30%; object-fit: cover;" alt="image<?= $value->getTitre() ?>">
+    ?> <div id="confCard" class="card border border-0 mb-3">
+            <img id="imgConference" src="<?= URL ?>public/images/conferences/<?= $value->getImage() ?>" class="card-img-top" alt="image<?= $value->getTitre() ?>">
             <div class="card-body">
                 <h5 class="card-title text-center"><a href="<?= URL ?>conferences/conference/<?= $value->getId() ?>"><?= $value->getTitre() ?></a></h5>
             </div>

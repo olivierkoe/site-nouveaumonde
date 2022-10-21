@@ -1,7 +1,7 @@
 <?php
-
 abstract class  GlobalController
 {
+
     public static function ajoutImage($titre, $file, $repertoire)
     {
 

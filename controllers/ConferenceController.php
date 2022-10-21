@@ -28,7 +28,7 @@ class ConferenceController
 
     public function ajoutConference()
     {
-        require "views/Update/ajoutconferenceView.php";
+        require "views/Create/ajoutconferenceView.php";
     }
 
     public function ajoutConferenceValidation()

@@ -30,7 +30,7 @@
                     <div class="card-body d-flex align-items-end justify-content-center">
                         <div class="text-end">
                             <form action="<?= URL ?>partenaires/supprimer/<?= $value->getId() ?>" method="POST" onsubmit="confirm('Voulez vous vraiment supprimer cette atelier ?')">
-                                <a href="<?= URL ?>partenaires/modifier/<?= $value->getId() ?>" class="btn btn-warning">Modifier</a>
+                                <a id="partenaireCardLink" href="<?= URL ?>partenaires/modifier/<?= $value->getId() ?>" class="btn btn-warning">Modifier</a>
                                 <?php
                                 if ($_SESSION['role'] === "1") {
                                 ?>

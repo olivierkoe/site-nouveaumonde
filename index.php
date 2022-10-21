@@ -27,6 +27,7 @@ $contalternative = new AlternativeController();
 $contPartenaire = new PartenaireController();
 $userController = new UserController();
 $contPresentation = new PresentationController();
+$contUtilisateur = new UserController();
 
 try {
 
@@ -265,6 +266,43 @@ try {
                     // qui lanceras la fonction afficherPartenaire($url[2]) où url[2] corresspond à l'id transmis par POST
                 } else if ($url[1] === "partenaire") {
                     $contPartenaire->afficherPartenaire($url[2]);
+
+                    // dans le cas ou l'URL ne correspond pas as un URL définis on retourne un message d'erreur
+                } else {
+                    throw new Exception("URL pas bonne");
+                }
+                break;
+
+                // si l'url[0]  est égale à "partenaires" et si l'url[1] est égale à "" alors on appel le controller partenaire 
+                // qui lanceras la fonction afficherPartenaires()
+            case "utilisateurs":
+                if (empty($url[1])) {
+                    $contUtilisateur->afficherUtilisateurs();
+
+                    // si l'url[0]  est égale à "utilisateurs" et si l'url[1] est égale à "modifier" alors on appel le controller utilisateur
+                    // qui lanceras la fonction modifierutilisateur($url[2]) où url[2] corresspond à l'id transmis par POST
+                } else if ($url[1] === "modifier") {
+                    $contUtilisateur->modifierUtilisateur($url[2]);
+
+                    // si l'url[0]  est égale à "utilisateurs" et si l'url[1] est égale à "" alors on appel le controller utilisateur 
+                    // qui lanceras la fonction modifierutilisateurValider()
+                } else if ($url[1] === "modifValider") {
+                    $contUtilisateur->modifierUtilisateurValider();
+
+                    // si l'url[0]  est égale à "utilisateurs" et si l'url[1] est égale à "supprimer" alors on appel le controller utilisateur
+                    // qui lanceras la fonction supprimerutilisateur($url[2]) où url[2] corresspond à l'id transmis par POST
+                } else if ($url[1] === "supprimer") {
+                    $contUtilisateur->supprimerUtilisateur($url[2]);
+
+                    // si l'url[0]  est égale à "utilisateurs" et si l'url[1] est égale à "utilisateurs" alors on appel le controller utilisateur
+                    // qui lanceras la fonction afficherutilisateurs($url[2]) où url[2] corresspond à l'id transmis par POST
+                } else if ($url[1] === "utilisateurs") {
+                    $contUtilisateur->afficherUtilisateurs($url[2]);
+
+                    // si l'url[0]  est égale à "utilisateurs" et si l'url[1] est égale à "utilisateur" alors on appel le controller utilisateur
+                    // qui lanceras la fonction afficherutilisateur($url[2]) où url[2] corresspond à l'id transmis par POST
+                } else if ($url[1] === "utilisateur") {
+                    $contUtilisateur->afficherUtilisateur($url[2]);
 
                     // dans le cas ou l'URL ne correspond pas as un URL définis on retourne un message d'erreur
                 } else {

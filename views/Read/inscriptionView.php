@@ -34,7 +34,13 @@
             <label for="password2" class="form-label col-6">Confirmer password</label>
             <input type="password" class="password2" id="password2" name="password2" required>
         </div>
-        <button type="submit" class="btn btn-primary">valider</button>
+        <div>
+            <label for="image">Image de profil : </label>
+        </div>
+        <div>
+            <input type="file" name="newImage" class=" form-control" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload">
+        </div>
+        <button type="submit" class="btn btn-primary mt-3">valider</button>
     </form>
 </div>
 <?php

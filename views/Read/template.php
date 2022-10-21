@@ -41,6 +41,22 @@
                                 <a class="nav-link" href="<?= URL ?>partenaires">Partenaires</a>
                             </li>
                             <?php
+                            if ($_SESSION['role'] === "1" || $_SESSION['role'] === "2" || $_SESSION['role'] === "3") {
+                            ?>
+                                <li class="nav-item me-1">
+                                    <a class="nav-link" href="<?= URL ?>utilisateurs/utilisateur/<?= $_SESSION["pseudo"] ?>">Profil</a>
+                                </li>
+
+                            <?php
+                            }
+                            if ($_SESSION['role'] === "1" || $_SESSION['role'] === "3") {
+                            ?>
+                                <li class="nav-item me-1">
+                                    <a class="nav-link" href="<?= URL ?>utilisateurs">Utilisateurs</a>
+                                </li>
+
+                            <?php
+                            }
                             if (!isset($_SESSION['pseudo'])) {
                             ?>
                                 <li class="nav-item">

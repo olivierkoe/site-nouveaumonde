@@ -11,6 +11,7 @@ class UserController
     public function __construct()
     {
         $this->userManager = new UserManager();
+        $this->userManager->chargementUsers();
     }
 
     public function afficherConnexion()
@@ -70,7 +71,7 @@ class UserController
         if (!empty($_POST['pseudo']) || !empty($_POST['mail']) || !empty($_POST['password']) || !empty($_POST['password2'])) {
             if ($_POST['password'] === $_POST['password2']) {
                 $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
-                $result = $this->userManager->addUserDB($_POST['pseudo'], $_POST['nom'], $_POST['prenom'], $_POST['mail'], $password);
+                $result = $this->userManager->addUserDB($_POST['pseudo'], $_POST['nom'], $_POST['prenom'], $_POST['mail'], $password, $_POST["image"]);
                 if ($result) {
                     GlobalController::manageErrors("success", "Inscription effectuée");
                     header("location:" . URL . "connexion");
@@ -85,5 +86,67 @@ class UserController
             GlobalController::manageErrors("danger", "Veuillez remplir tout les champs");
             header("location:" . URL . "inscription");
         }
+    }
+
+    public function afficherUtilisateurs()
+    {
+        $listeUtilisateurs = $this->userManager->getUser();
+        // var_dump($listeUtilisateurs);
+        // exit;
+        require "views/Read/utilisateursView.php";
+    }
+
+    public function afficherUtilisateur($pseudo)
+    {
+        $utilisateur = $this->userManager->getUserByPseudoDB($pseudo);
+        require "views/Read/utilisateurView.php";
+    }
+
+    private function exploder($array)
+    {
+        return explode(".", $array);
+    }
+
+    public function ajoutUtilisateur()
+    {
+        require "views/Update/ajoutUtilisateurView.php";
+    }
+
+
+    public function supprimerUtilisateur($id)
+    {
+        $utilisateur = $this->userManager->getUserByIdDb($id);
+
+        $dirImage = $utilisateur->getImage();
+        unlink("public/images/" . $dirImage);
+        $this->userManager->supprimerUserBD($id);
+
+        GlobalController::manageErrors("success", "Votre utilisateur a bien été supprimé");
+        header("location: " . URL . "utilisateurs");
+    }
+
+    public function modifierUtilisateur($id)
+    {
+
+        $utilisateur = $this->userManager->getUserByIdDb($id);
+        require "views/Update/modifierutilisateurView.php";
+    }
+
+    public function modifierUtilisateurValider()
+    {
+        $utilisateurInfos = $_POST;
+        $utilisateurImage = $_FILES;
+
+        if ($utilisateurImage['newImage']['size'] !== 0 && $utilisateurImage['newImage']['size']) {
+            $imgToAdd = $utilisateurImage['newImage']['name'];
+            $this->utilisateurManager->modifierUtilisateurBD($_POST['id'], $utilisateurInfos['pseudo'], $utilisateurInfos['nom'], $utilisateurInfos['prenom'], $_POST['mail'], $imgToAdd, $_POST['role']);
+            header("location: ../utilisateurs");
+        } else {
+            $imgToAdd = $utilisateurInfos['image'];
+            $this->userManager->modifierUserBD($_POST['id'], $utilisateurInfos['pseudo'], $utilisateurInfos['nom'], $utilisateurInfos['prenom'], $_POST['mail'], $imgToAdd, $_POST['role']);
+            header("location: ../utilisateur");
+        }
+        GlobalController::manageErrors("success", "Les modifications ont bien été enregistrées");
+        header("location: " . URL . "utilisateurs");
     }
 }
