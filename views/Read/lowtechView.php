@@ -5,11 +5,11 @@
 <div class="m-2 p-2 m-3" id="principal">
     <table class="table">
         <tr class="text-center">
-            <th><img src="<?= URL ?>public/images/lowtech/imagepresentation/<?= $lowtech->getImage() ?>" alt="image <?= $lowtech->getTitre() ?>" width="30%;"></th>
+            <th><img src="<?= URL ?>public/images/lowtech/imagepresentation/<?= $lowtech->getImage() ?>" alt="image <?= $lowtech->getTitre() ?>" class="shadow " width="30%;"></th>
         </tr>
 
         <tr>
-            <td class="bg-light p-5">
+            <td class="shadow bg-light p-5">
                 <div class="align-start mb-2">
                     <h1><?= $lowtech->getTitre() ?></h1>
                 </div><br>
@@ -56,7 +56,7 @@
         </tr>
     </table>
     <div class="d-flex justify-content-center">
-        <a href="<?= URL ?>lowtechs/" class="btn btn-primary d-block col-3">retour</a>
+        <a href="<?= URL ?>lowtechs/" class="shadow btn btn-primary d-block col-3">retour</a>
     </div>
 </div>
 

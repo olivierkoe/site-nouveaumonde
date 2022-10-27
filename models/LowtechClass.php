@@ -13,9 +13,26 @@ class Lowtech
     private $necessite;
     private $source;
     private $imagePrincipe;
+    private $dateCreation;
+    private $dateModif;
+    private $modifAuth;
 
-    function __construct($titre, $materiaux, $fabrication, $fonctionnement, $id, $image, $imagePrincipe, $difficulte, $temps, $necessite, $source)
-    {
+    function __construct(
+        $titre,
+        $materiaux,
+        $fabrication,
+        $fonctionnement,
+        $id,
+        $image,
+        $imagePrincipe,
+        $difficulte,
+        $temps,
+        $necessite,
+        $source,
+        $dateCreation,
+        $dateModif,
+        $modifAuth,
+    ) {
         $this->id = $id;
         $this->titre = $titre;
         $this->materiaux = $materiaux;
@@ -27,6 +44,9 @@ class Lowtech
         $this->temps = $temps;
         $this->source = $source;
         $this->necessite = $necessite;
+        $this->dateCreation = $dateCreation;
+        $this->dateModif = $dateModif;
+        $this->modifAuth = $modifAuth;
     }
 
     public function getImage()
@@ -82,6 +102,21 @@ class Lowtech
     public function getid()
     {
         return $this->id;
+    }
+
+    public function getDateCreation()
+    {
+        return $this->dateCreation;
+    }
+
+    public function getDateModif()
+    {
+        return $this->dateModif;
+    }
+
+    public function getModifAuth()
+    {
+        return $this->modifAuth;
     }
 
     public function setImage($image)
@@ -141,6 +176,12 @@ class Lowtech
     public function setSource($source)
     {
         $this->source = $source;
+        return $this;
+    }
+
+    public function setModifAuth($modifAuth)
+    {
+        $this->modifAuth = $modifAuth;
         return $this;
     }
 

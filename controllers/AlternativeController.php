@@ -98,7 +98,8 @@ class AlternativeController
                 $alternativeInfos['theme'],
                 $alternativeInfos['email'],
                 $alternativeInfos['site'],
-                $alternativeInfos['id']
+                $alternativeInfos['id'],
+                $_POST['modifAuth']
             );
             //on redirige vers la page des "alternatives"
             header("location: ../alternatives");
@@ -112,7 +113,8 @@ class AlternativeController
                 $alternativeInfos['theme'],
                 $alternativeInfos['email'],
                 $alternativeInfos['site'],
-                $alternativeInfos['id']
+                $alternativeInfos['id'],
+                $_POST['modifAuth']
             );
 
             //on redirige vers la page de l' "alternative"

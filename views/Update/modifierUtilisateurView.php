@@ -75,6 +75,7 @@
             <label for="image">Image actuel: </label>
         </div>
         <div class="align-middle mb-2">
+            <input type="hidden" value="<?= $_SESSION["pseudo"] ?>" name="modifAuth" id="modifAuth" class="form-control">
             <input type="hidden" value="<?= $utilisateur->getImage() ?>" name="image" id="image" class="form-control">
             <img src="<?= URL ?>public/images/utilisateurs/<?= $utilisateur->getImage() ?>" name="image<?= $utilisateur->getPseudo() ?>" alt="image" width="200px;">
         </div>

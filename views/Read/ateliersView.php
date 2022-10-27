@@ -7,7 +7,7 @@
     <?php
     foreach ($listeAteliers as $value) {
     ?>
-        <div id="mainAtelier" class="card d-flex flex-wrap">
+        <div id="mainAtelier" class="shadow card d-flex flex-wrap">
             <h2 class="card-title fs-3 mt-3 mb-1 text-center"><?= $value->getTitre() ?></h2>
             <h3 class="text-center fs-5 mb-3">Budget de l'état 250.7 mds € par an </h3>
             <div class="d-flex flex-row flex-wrap justify-content-evenly">
@@ -15,7 +15,7 @@
                 <?php
                 if (!empty($value->getArgument1())) {
                 ?>
-                    <article id="atelierCard" class="card d-flex col-5">
+                    <article id="atelierCard" class="shadow card d-flex col-5">
                         <h5> <?= $value->getArgument1() ?></h5>
                         <div id="atelierText">
                             <p id="textCard" class="align-middle fs-6">Pour un montant de <?= $value->getPrix1() ?> milliards € par an</p>
@@ -34,7 +34,7 @@
 
                 if (!empty($value->getArgument2())) {
                 ?>
-                    <article id="atelierCard" class="card d-flex col-5">
+                    <article id="atelierCard" class="shadow card d-flex col-5">
                         <h5> <?= $value->getArgument2() ?></h5>
                         <div>
                             <p id="textCard" class="align-middle  fs-6">Pour un montant de <?= $value->getPrix2() ?> milliards € par an </p>
@@ -73,29 +73,33 @@
             </div>
             <?php
             if ($_SESSION['role'] === "1" || $_SESSION['role'] === "3") {
-            ?>
+            ?><div class="text-center">
+                    <p class="mt-3" id="legende">Créer le <?= $value->getDateCreation() ?> </p>
+                    <p class="mt-3" id="legende">Modifié le <?= $value->getDateModif() ?> par <?= $value->getModifAuth() ?></p>
+                </div>
                 <div id="btnAtelierCard">
-                    <p><a href="<?= URL ?>ateliers/modifier/<?= $value->getId() ?>" class="btn btn-warning me-3">Modifier</a></p>
+                    <p><a href="<?= URL ?>ateliers/modifier/<?= $value->getId() ?>" class="shadow btn btn-warning me-3">Modifier</a></p>
                     <?php
                     if ($_SESSION['role'] === "1") {
                     ?>
-                        <p class="align-middle">
                         <form action="<?= URL ?>ateliers/supprimer/<?= $value->getId() ?>" method="POST" onsubmit="confirm('Voulez vous vraiment supprimer cette atelier ?')">
-                            <button class="btn btn-danger" name="">Supprimer</button>
+                            <button class="shadow btn btn-danger" name="">Supprimer</button>
                         </form>
-                    <?php
-                    }
-                    ?>
+
                 </div>
             <?php
-            }
+                    }
             ?>
+
+        <?php
+            }
+        ?>
         </div>
     <?php
     }
     if ($_SESSION['role'] === "1" || $_SESSION['role'] === "3") {
     ?>
-        <a href="<?= URL ?>ateliers/ajouter" class="btn btn-success d-block col-4 m-auto mt-3 mb-3">Ajouter</a>
+        <a href="<?= URL ?>ateliers/ajouter" class="shadow btn btn-success d-block col-4 m-auto mt-3 mb-3">Ajouter</a>
     <?php
     }
     ?>

@@ -26,7 +26,17 @@ class AlternativeManager extends Model
         $req->execute([]);
         $data = $req->fetchAll(PDO::FETCH_ASSOC);
         foreach ($data as $value) {
-            $newalternative = new Alternative($value['titre'], $value['image'], $value['theme'], $value['email'], $value['site'], $value['id']);
+            $newalternative = new Alternative(
+                $value['titre'],
+                $value['image'],
+                $value['theme'],
+                $value['email'],
+                $value['site'],
+                $value['id'],
+                $value['dateCreation'],
+                $value['dateModif'],
+                $value['modifAuth']
+            );
             $this->ajoutAlternative($newalternative);
         }
     }
@@ -67,10 +77,10 @@ class AlternativeManager extends Model
         ]);
     }
 
-    public function modifierAlternativeBD($titre, $image, $theme, $email, $site, $id)
+    public function modifierAlternativeBD($titre, $image, $theme, $email, $site, $id, $modifAuth)
     {
         $db = $this->getBdd();
-        $sql = "UPDATE alternative SET titre =:titre, image =:image, theme = :theme , email = :email, site = :site WHERE id = :id";
+        $sql = "UPDATE alternative SET titre =:titre, image =:image, theme = :theme , email = :email, site = :site, modifAuth = :modifAuth WHERE id = :id";
         $req = $db->prepare($sql);
         $req->execute([
             ":titre" => $titre,
@@ -78,7 +88,8 @@ class AlternativeManager extends Model
             ":theme" => $theme,
             ":email" => $email,
             ":site" => $site,
-            ":id" => $id
+            ":id" => $id,
+            ":modifAuth" => $modifAuth
 
         ]);
     }

@@ -71,8 +71,10 @@
         </div>
         <div>
             <input type="file" name="newImage2" class=" form-control" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload">
+            <input type="hidden" value="<?= $lowtech->getId() ?>" name="id" id="id" class="form-control">
+            <input type="hidden" value="<?= $_SESSION["pseudo"] ?>" name="modifAuth" id="modifAuth" class="form-control">
         </div>
-        <input type="hidden" value="<?= $lowtech->getId() ?>" name="id" id="id" class="form-control">
+
         <button class="btn btn-success mt-2">Valider</button>
     </form>
 

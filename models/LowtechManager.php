@@ -24,7 +24,7 @@ class LowtechManager extends Model
         $req->execute([]);
         $data = $req->fetchAll(PDO::FETCH_ASSOC);
         foreach ($data as $value) {
-            $newlowtech = new Lowtech($value['titre'], $value['materiaux'], $value['fabrication'], $value['fonctionnement'], $value['id'], $value['image'], $value['imagePrincipe'], $value['difficulte'], $value['temps'], $value['necessite'], $value['source']);
+            $newlowtech = new Lowtech($value['titre'], $value['materiaux'], $value['fabrication'], $value['fonctionnement'], $value['id'], $value['image'], $value['imagePrincipe'], $value['difficulte'], $value['temps'], $value['necessite'], $value['source'], $value['dateCreation'], $value['dateModif'], $value['modifAuth']);
             $this->ajoutLowtech($newlowtech);
         }
     }
@@ -68,10 +68,22 @@ class LowtechManager extends Model
         ]);
     }
 
-    public function modifierLowtechBD($id, $titre, $materiaux, $fabrication, $fonctionnement, $image, $imagePrincipe, $difficulte, $temps, $necessite, $source)
-    {
+    public function modifierLowtechBD(
+        $id,
+        $titre,
+        $materiaux,
+        $fabrication,
+        $fonctionnement,
+        $image,
+        $imagePrincipe,
+        $difficulte,
+        $temps,
+        $necessite,
+        $source,
+        $modifAuth
+    ) {
         $db = $this->getBdd();
-        $sql = "UPDATE lowtech SET titre =:titre, materiaux =:materiaux, fabrication = :fabrication, fonctionnement = :fonctionnement, image = :image, imagePrincipe = :imagePrincipe, difficulte = :difficulte, temps = :temps, necessite =:necessite, source = :source WHERE id = :id";
+        $sql = "UPDATE lowtech SET titre =:titre, materiaux =:materiaux, fabrication = :fabrication, fonctionnement = :fonctionnement, image = :image, imagePrincipe = :imagePrincipe, difficulte = :difficulte, temps = :temps, necessite =:necessite, source = :source, modifAuth = :modifAuth WHERE id = :id";
         $req = $db->prepare($sql);
         $req->execute([
             ":image" => $image,
@@ -84,7 +96,8 @@ class LowtechManager extends Model
             ":difficulte" => $difficulte,
             ":temps" => $temps,
             ":necessite" => $necessite,
-            ":source" => $source
+            ":source" => $source,
+            ":modifAuth" => $modifAuth
         ]);
     }
 }

@@ -91,7 +91,8 @@ class PartenaireController
                 $partenairesInfos['description'],
                 $partenairesInfos['siteWeb'],
                 $_POST['email'],
-                $imgToAdd
+                $imgToAdd,
+                $_POST['modifAuth']
             );
             header("location: ../partenaires");
         } else {
@@ -102,7 +103,8 @@ class PartenaireController
                 $partenairesInfos['description'],
                 $partenairesInfos['siteWeb'],
                 $_POST['email'],
-                $imgToAdd
+                $imgToAdd,
+                $_POST['modifAuth']
             );
             header("location: ../partenaires");
         }

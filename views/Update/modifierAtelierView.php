@@ -61,6 +61,7 @@
         </div>
         <div>
             <input type="text" name="prix3" id="prix3" value="<?= $ateliers->getPrix3() ?>" class="form-control">
+            <input type="hidden" value="<?= $_SESSION["pseudo"] ?>" name="modifAuth" id="modifAuth" class="form-control">
         </div>
         <div>
             <input type="hidden" value="<?= $ateliers->getId() ?>" name="id" id="id" class="form-control">

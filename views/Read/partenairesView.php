@@ -5,7 +5,7 @@
     <?php
     foreach ($listePartenaires as $value) {
     ?>
-        <div id="partenaireCard" class="card d-flex flex-row flex-wrap mt-3 border border-1 mb-3 m-auto p-3">
+        <div id="partenaireCard" class="shadow card d-flex flex-row flex-wrap mt-2 border border-1 mb-3 m-auto p-3">
 
             <div id="cardBodyPartenaire" class="card-body col-8" style=" height: 70%">
                 <h5 id="partenaireTitre" class="card-title"><?= $value->getTitre() ?></h5>
@@ -29,13 +29,14 @@
                 ?>
                     <div class="card-body d-flex align-items-end justify-content-center">
                         <div class="text-end">
+                            <p class="mt-3 text-center" id="legende">Créer le <?= $value->getDateCreation() ?> </p>
                             <form action="<?= URL ?>partenaires/supprimer/<?= $value->getId() ?>" method="POST" onsubmit="confirm('Voulez vous vraiment supprimer cette atelier ?')">
-                                <a id="partenaireCardLink" href="<?= URL ?>partenaires/modifier/<?= $value->getId() ?>" class="btn btn-warning">Modifier</a>
+                                <a id="partenaireCardLink" href="<?= URL ?>partenaires/modifier/<?= $value->getId() ?>" class="shadow btn btn-warning">Modifier</a>
                                 <?php
                                 if ($_SESSION['role'] === "1") {
                                 ?>
-                                    <button class="btn btn-danger">Supprimer</button>
-
+                                    <button class="shadow btn btn-danger">Supprimer</button>
+                                    <p class="mt-3" id="legende">Modifié le <?= $value->getDateModif() ?> par <?= $value->getModifAuth() ?></p>
                             </form>
                         <?php
                                 }

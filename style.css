@@ -14,7 +14,7 @@ body{
 
 /* TEMPLATE */
 
-/* gére l'affichage du titre du template */
+/* Gére l'affichage du titre du template */
 #titeTemplate{
     color: black;
     background-color: #F2F1DC;
@@ -35,6 +35,39 @@ body{
     background-color: #6FA8BF;
     }
 
+#imgLogo:hover{
+    box-shadow: 0 0 11px rgba(33,33,33,.2); 
+    }
+
+#mainCard{
+    box-shadow: none;
+}
+#mainCard:hover{
+    transform:scale(1.1) 
+}
+#navTitle {
+    text-shadow: none;
+    }
+#navTitle:hover {
+    text-shadow: 0 0 2px rgba(0, 0, 0, 0.418);
+}
+
+#footerTitle {
+    text-shadow: none;
+    }
+#footerTitle:hover {
+    transform:scale(1.5)
+}
+
+#imageCardPresentation{
+    box-shadow: none;
+}
+
+#imageCardPresentation:hover{
+    box-shadow: 0 0 11px rgba(33,33,33,.2); 
+
+}
+
 /* ACCUEIL */
 
 /* gére la couleur, la taille, la disposition,l'opacité du background de page d'accueil */
@@ -49,6 +82,7 @@ body{
 
 /* CONFERENCES */
 #confCard{
+    
     width: 49%;
     margin-top: 5rem;
     margin-bottom: 5rem;
@@ -133,6 +167,14 @@ margin-top: 1rem;
 #partenaireCard{
     width: 45%;
 }
+#partenaireCard:hover{
+    transform:scale(1.05)
+}
+
+/* LOWTECH */
+#legende{
+    font-size: 10px;
+}
 /* gére la couleur du texte des recomandations pour la création du mot de passe sur le formulaire d'inscription */
 .invalid{
 color: red;        
@@ -140,7 +182,19 @@ color: red;
 .valid{
     color: green;        
     }
+/* BOUTTON RETOUR VERS LE HAUT*/
+    #scroll_to_top {
+        position: fixed;
+        width: 25px;
+        height: 25px;
+        bottom: 10px;
+        right: 10px;
+        z-index: 2;
+    }
 
+    #scroll_to_top img {
+        width: 25px;
+    }
 
     /* RESPONSIVE */
 

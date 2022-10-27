@@ -31,6 +31,9 @@ class PartenaireManager extends Model
                 $value['image'],
                 $value['siteWeb'],
                 $value['email'],
+                $value['dateCreation'],
+                $value['dateModif'],
+                $value['modifAuth']
             );
             $this->ajoutPartenaire($newpartenaire);
         }
@@ -71,10 +74,10 @@ class PartenaireManager extends Model
         ]);
     }
 
-    public function modifierPartenaireBD($id, $titre, $description, $siteWeb, $email, $image)
+    public function modifierPartenaireBD($id, $titre, $description, $siteWeb, $email, $image, $modifAuth)
     {
         $db = $this->getBdd();
-        $sql = "UPDATE partenaire SET titre =:titre, description =:description, siteWeb = :siteWeb, email = :email, image = :image WHERE id = :id";
+        $sql = "UPDATE partenaire SET titre =:titre, description =:description, siteWeb = :siteWeb, email = :email, image = :image, modifAuth = :modifAuth WHERE id = :id";
         $req = $db->prepare($sql);
         $req->execute([
             ":titre" => $titre,
@@ -82,7 +85,8 @@ class PartenaireManager extends Model
             ":siteWeb" => $siteWeb,
             ":email" => $email,
             ":image" => $image,
-            ":id" => $id
+            ":id" => $id,
+            ":modifAuth" => $modifAuth
         ]);
     }
 }

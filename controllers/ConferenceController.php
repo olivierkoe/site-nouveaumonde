@@ -71,11 +71,11 @@ class ConferenceController
 
         if ($conferenceImage['newImage']['size'] !== 0 && $conferenceImage['newImage']['size'] !== $conferenceInfos['image']) {
             $imgToAdd = $conferenceImage['newImage']['name'];
-            $this->conferenceManager->modifierConferenceBD($_POST['id'], $conferenceInfos['titre'], $conferenceInfos['theme'], $conferenceInfos['invite'], $_POST['synopsis'], $conferenceInfos['date'], $_POST['heure'], $imgToAdd);
+            $this->conferenceManager->modifierConferenceBD($_POST['id'], $conferenceInfos['titre'], $conferenceInfos['theme'], $conferenceInfos['invite'], $_POST['synopsis'], $conferenceInfos['date'], $_POST['heure'], $imgToAdd, $_POST['modifAuth']);
             header("location: ../conferences");
         } else {
             $imgToAdd = $conferenceInfos['image'];
-            $this->conferenceManager->modifierConferenceBD($_POST['id'], $conferenceInfos['titre'], $conferenceInfos['theme'], $conferenceInfos['invite'], $_POST['synopsis'], $conferenceInfos['date'], $_POST['heure'], $imgToAdd);
+            $this->conferenceManager->modifierConferenceBD($_POST['id'], $conferenceInfos['titre'], $conferenceInfos['theme'], $conferenceInfos['invite'], $_POST['synopsis'], $conferenceInfos['date'], $_POST['heure'], $imgToAdd, $_POST['modifAuth']);
             header("location: ../conference");
         }
         GlobalController::manageErrors("success", "Les modifications ont bien été enregistrées");

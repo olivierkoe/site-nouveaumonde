@@ -5,8 +5,8 @@
     <?php
     foreach ($listelowtechs as $value) {
     ?>
-        <figure class="card m-auto mt-3 border border-0 mb-3" style="width: 18rem;">
-            <img src="<?= URL ?>public/images/lowtech/imagepresentation/<?= $value->getImage() ?>" class="card-img-top p-1" style="height: 18rem; object-fit: cover;" alt="image<?= $value->getTitre() ?>" />
+        <figure class="shadow card m-auto mt-3 border border-0 mb-3" id="mainCard" style="width: 18rem;">
+            <img src="<?= URL ?>public/images/lowtech/imagepresentation/<?= $value->getImage() ?>" id="imageCardPresentation" class="card-img-top p-1" style="height: 18rem; object-fit: cover;" alt="image<?= $value->getTitre() ?>" />
             <div class="card-body">
                 <h5 class="card-title"><a href="<?= URL ?>lowtechs/lowtech/<?= $value->getId() ?>"><?= $value->getTitre() ?></a></h5>
             </div>
@@ -22,12 +22,13 @@
                 <div class="card-body">
                     <div class="text-center">
                         <form action="<?= URL ?>lowtechs/supprimer/<?= $value->getId() ?>" method="POST" onsubmit="confirm('Voulez vous vraiment supprimer cette atelier ?')">
-                            <a href="<?= URL ?>lowtechs/modifier/<?= $value->getId() ?>" class="btn btn-warning">Modifier</a>
+                            <p class="mt-3" id="legende">Créer le <?= $value->getDateCreation() ?> </p>
+                            <a href="<?= URL ?>lowtechs/modifier/<?= $value->getId() ?>" class="shadow btn btn-warning">Modifier</a>
                             <?php
                             if ($_SESSION['role'] === "1") {
                             ?>
-
-                                <button class="btn btn-danger">Supprimer</button>
+                                <button class="shadow btn btn-danger">Supprimer</button>
+                                <p class="mt-3" id="legende">Modifié le <?= $value->getDateModif() ?> par <?= $value->getModifAuth() ?></p>
                         </form>
                     </div>
                 </div>
@@ -44,7 +45,7 @@
 if ($_SESSION['role'] === "1") {
 ?>
     <div class="d-flex justify-content-center">
-        <a href="<?= URL ?>lowtechs/ajouter" class="btn btn-success d-block col-3">Ajouter</a>
+        <a href="<?= URL ?>lowtechs/ajouter" class="shadow btn btn-success d-block col-3">Ajouter</a>
     </div>
 <?php
 }

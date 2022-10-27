@@ -24,7 +24,19 @@ class ConferenceManager extends Model
         $req->execute([]);
         $data = $req->fetchAll(PDO::FETCH_ASSOC);
         foreach ($data as $value) {
-            $newconference = new conference($value['titre'], $value['invite'],  $value['synopsis'], $value["theme"], $value['date'],  $value['heure'], $value['image'], $value['id']);
+            $newconference = new conference(
+                $value['titre'],
+                $value['invite'],
+                $value['synopsis'],
+                $value["theme"],
+                $value['date'],
+                $value['heure'],
+                $value['image'],
+                $value['id'],
+                $value['dateCreation'],
+                $value['dateModif'],
+                $value['modifAuth']
+            );
             $this->ajoutConference($newconference);
         }
     }
@@ -63,11 +75,20 @@ class ConferenceManager extends Model
         ]);
     }
 
-    public function modifierConferenceBD($id, $titre, $theme, $invite, $synopsis, $date, $heure, $image)
-    {
-        var_dump($id);
+    public function modifierConferenceBD(
+        $id,
+        $titre,
+        $theme,
+        $invite,
+        $synopsis,
+        $date,
+        $heure,
+        $image,
+        $modifAuth
+    ) {
+
         $db = $this->getBdd();
-        $sql = "UPDATE conference SET titre = :titre, theme = :theme, invite = :invite, synopsis = :synopsis, date = :date, heure = :heure, image = :image WHERE id = :id";
+        $sql = "UPDATE conference SET titre = :titre, theme = :theme, invite = :invite, synopsis = :synopsis, date = :date, heure = :heure, image = :image, modifAuth = :modifAuth  WHERE id = :id";
         $req = $db->prepare($sql);
         $req->execute([
             ":titre" => $titre,
@@ -77,8 +98,8 @@ class ConferenceManager extends Model
             ":date" => $date,
             ":heure" => $heure,
             ":image" => $image,
-            ":id" => $id
-
+            ":id" => $id,
+            ":modifAuth" => $modifAuth
         ]);
     }
 }

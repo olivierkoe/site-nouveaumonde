@@ -27,7 +27,19 @@ class UserManager extends Model
         $req->execute([]);
         $data = $req->fetchAll(PDO::FETCH_ASSOC);
         foreach ($data as $value) {
-            $newUser = new User($value['id'], $value['pseudo'], $value['nom'], $value['prenom'], $value['mail'], $value['password'], $value['role'], $value['image']);
+            $newUser = new User(
+                $value['id'],
+                $value['pseudo'],
+                $value['nom'],
+                $value['prenom'],
+                $value['mail'],
+                $value['password'],
+                $value['role'],
+                $value['image'],
+                $value['dateCreation'],
+                $value['dateModif'],
+                $value['modifAuth']
+            );
             $this->ajoutUser($newUser);
         }
     }
@@ -41,7 +53,19 @@ class UserManager extends Model
         ]);
         $data = $stmt->fetch(PDO::FETCH_OBJ);
         if ($data) {
-            $user = new User($data->id, $data->pseudo, $data->nom,  $data->prenom, $data->mail, $data->password, $data->role, $data->image);
+            $user = new User(
+                $data->id,
+                $data->pseudo,
+                $data->nom,
+                $data->prenom,
+                $data->mail,
+                $data->password,
+                $data->role,
+                $data->image,
+                $data->dateCreation,
+                $data->dateModif,
+                $data->modifAuth
+            );
             return $user;
         } else {
             return null;
@@ -57,7 +81,19 @@ class UserManager extends Model
         ]);
         $data = $stmt->fetch(PDO::FETCH_OBJ);
         if ($data) {
-            $user = new User($data->id, $data->pseudo, $data->nom,  $data->prenom, $data->mail, $data->password, $data->role, $data->image);
+            $user = new User(
+                $data->id,
+                $data->pseudo,
+                $data->nom,
+                $data->prenom,
+                $data->mail,
+                $data->password,
+                $data->role,
+                $data->image,
+                $data->dateCreation,
+                $data->dateModif,
+                $data->modifAuth
+            );
             return $user;
         } else {
             return null;
@@ -66,12 +102,24 @@ class UserManager extends Model
 
     public function addUserDB($pseudo, $nom, $prenom, $mail, $password, $image)
     {
-        $sql = "INSERT INTO user (pseudo,nom,prenom,mail,password,role) VALUES (:pseudo,:nom,:prenom,:mail,:password,$image,2)";
-        $stmt = $this->getBdd()->prepare($sql);
-        if ($stmt->execute([":pseudo" => $pseudo, ":nom" => $nom, ":prenom" => $prenom, ":mail" => $mail, ":password" => $password, ":image" => $image])) {
-            return true;
-        } else {
-            return false;
+        try {
+            $sql = "INSERT INTO user (pseudo,nom,prenom,mail,password,role,image) 
+            VALUES (:pseudo,:nom,:prenom,:mail,:password,2,:image)";
+            $stmt = $this->getBdd()->prepare($sql);
+            if ($stmt->execute([
+                ":pseudo" => $pseudo,
+                ":nom" => $nom,
+                ":prenom" => $prenom,
+                ":mail" => $mail,
+                ":password" => $password,
+                ":image" => $image
+            ])) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (Exception $e) {
+            var_dump($e);
         }
     }
 
@@ -85,10 +133,10 @@ class UserManager extends Model
         ]);
     }
 
-    public function modifierUserBD($id, $pseudo, $nom, $prenom, $mail, $image, $password)
+    public function modifierUserBD($id, $pseudo, $nom, $prenom, $mail, $image, $password, $modifAuth)
     {
         $db = $this->getBdd();
-        $sql = "UPDATE user SET pseudo =:pseudo, nom =:nom, prenom = :prenom, mail = :mail, role = :role , image = :image, password = :password WHERE id = :id";
+        $sql = "UPDATE user SET pseudo =:pseudo, nom =:nom, prenom = :prenom, mail = :mail, role = :role , image = :image, password = :password, modifAuth = :modifAuth WHERE id = :id";
         $req = $db->prepare($sql);
         $req->execute([
             ":id" => $id,
@@ -98,6 +146,7 @@ class UserManager extends Model
             ":mail" => $mail,
             ":image" => $image,
             ":password" => $password,
+            ":modifAuth" => $modifAuth
         ]);
     }
 }

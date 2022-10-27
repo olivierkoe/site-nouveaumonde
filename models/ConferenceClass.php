@@ -10,9 +10,12 @@ class Conference
     private $heure;
     private $image;
     private $id;
+    private $dateCreation;
+    private $dateModif;
+    private $modifAuth;
 
 
-    function __construct($titre, $invite, $synopsis, $theme, $date, $heure, $image, $id)
+    function __construct($titre, $invite, $synopsis, $theme, $date, $heure, $image, $id, $dateCreation, $dateModif, $modifAuth)
     {
 
         $this->titre = $titre;
@@ -23,6 +26,9 @@ class Conference
         $this->heure = $heure;
         $this->image = $image;
         $this->id = $id;
+        $this->dateCreation = $dateCreation;
+        $this->dateModif = $dateModif;
+        $this->modifAuth = $modifAuth;
     }
 
     public function getTitre()
@@ -65,6 +71,21 @@ class Conference
         return $this->id;
     }
 
+    public function getDateCreation()
+    {
+        return $this->dateCreation;
+    }
+
+    public function getDateModif()
+    {
+        return $this->dateModif;
+    }
+
+    public function getModifAuth()
+    {
+        return $this->modifAuth;
+    }
+
     public function setImage($image)
     {
         $this->image = $image;
@@ -98,6 +119,12 @@ class Conference
     public function setHeure($heure)
     {
         $this->heure = $heure;
+        return $this;
+    }
+
+    public function setModifAuth($modifAuth)
+    {
+        $this->modifAuth = $modifAuth;
         return $this;
     }
 }

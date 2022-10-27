@@ -14,9 +14,12 @@ class Atelier
     private $sourceArg3;
     private $prix3;
     private $id;
+    private $dateCreation;
+    private $dateModif;
+    private $modifAuth;
 
 
-    function __construct($titre, $argument1, $argument2, $argument3,  $sourceArg1, $sourceArg2, $sourceArg3, $prix1, $prix2, $prix3, $id)
+    function __construct($titre, $argument1, $argument2, $argument3,  $sourceArg1, $sourceArg2, $sourceArg3, $prix1, $prix2, $prix3, $id, $dateCreation, $dateModif, $modifAuth)
     {
 
         $this->titre = $titre;
@@ -30,6 +33,9 @@ class Atelier
         $this->sourceArg3 = $sourceArg3;
         $this->prix3 = $prix3;
         $this->id = $id;
+        $this->dateCreation = $dateCreation;
+        $this->dateModif = $dateModif;
+        $this->modifAuth = $modifAuth;
     }
 
     public function getTitre()
@@ -87,7 +93,20 @@ class Atelier
         return $this->id;
     }
 
+    public function getDateCreation()
+    {
+        return $this->dateCreation;
+    }
 
+    public function getDateModif()
+    {
+        return $this->dateModif;
+    }
+
+    public function getModifAuth()
+    {
+        return $this->modifAuth;
+    }
 
     public function setTitre($titre)
     {
@@ -145,6 +164,12 @@ class Atelier
     public function setPrix3($prix3)
     {
         $this->prix3 = $prix3;
+        return $this;
+    }
+
+    public function setModifAuth($modifAuth)
+    {
+        $this->modifAuth = $modifAuth;
         return $this;
     }
 }

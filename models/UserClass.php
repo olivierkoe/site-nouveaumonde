@@ -10,8 +10,11 @@ class User
     private $password;
     private $role;
     private $image;
+    private $dateCreation;
+    private $dateModif;
+    private $modifAuth;
 
-    public function __construct($id, $pseudo, $nom, $prenom, $mail, $password, $role, $image)
+    public function __construct($id, $pseudo, $nom, $prenom, $mail, $password, $role, $image, $dateCreation, $dateModif, $modifAuth)
     {
         $this->id = $id;
         $this->pseudo = $pseudo;
@@ -21,6 +24,9 @@ class User
         $this->password = $password;
         $this->role = $role;
         $this->image = $image;
+        $this->dateCreation = $dateCreation;
+        $this->dateModif = $dateModif;
+        $this->modifAuth = $modifAuth;
     }
 
     // GET 
@@ -85,6 +91,22 @@ class User
         return htmlspecialchars($this->image);
     }
 
+    public function getDateCreation()
+    {
+        return $this->dateCreation;
+    }
+
+    public function getDateModif()
+    {
+        return $this->dateModif;
+    }
+
+    public function getModifAuth()
+    {
+        return $this->modifAuth;
+    }
+
+
     // SET
 
     public function setPseudo($pseudo)
@@ -126,6 +148,12 @@ class User
     public function setImage($image)
     {
         $this->image = $image;
+        return $this;
+    }
+
+    public function setModifAuth($modifAuth)
+    {
+        $this->modifAuth = $modifAuth;
         return $this;
     }
 }

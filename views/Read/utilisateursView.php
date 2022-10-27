@@ -5,7 +5,7 @@
     <?php
     foreach ($listeUtilisateurs as $value) {
     ?>
-        <figure class="card m-auto mt-3 border border-0 mb-3" style="width: 18rem;">
+        <figure id="mainCard" class="shadow card m-auto mt-3 border border-0 mb-3" style="width: 18rem;">
             <img src="<?= URL ?>public/images/utilisateurs/<?= $value->getImage() ?>" class="card-img-top p-1" style="height: 18rem; object-fit: cover;" alt="image<?= $value->getPseudo() ?>" />
             <div class="card-body">
                 <h5 class="card-title"><a href="<?= URL ?>utilisateurs/utilisateur/<?= $value->getPseudo() ?>"><?= $value->getPseudo() ?></a></h5>
@@ -29,12 +29,12 @@
                 <div class="card-body">
                     <div class="text-center">
                         <form action="<?= URL ?>utilisateurs/supprimer/<?= $value->getId() ?>" method="POST" onsubmit="confirm('Voulez vous vraiment supprimer cette atelier ?')">
-                            <a href="<?= URL ?>utilisateurs/modifier/<?= $value->getId() ?>" class="btn btn-warning">Modifier</a>
+                            <a href="<?= URL ?>utilisateurs/modifier/<?= $value->getId() ?>" class="shadow btn btn-warning">Modifier</a>
                             <?php
                             if ($_SESSION['role'] === "1") {
                             ?>
 
-                                <button class="btn btn-danger">Supprimer</button>
+                                <button class="shadow btn btn-danger">Supprimer</button>
                         </form>
                     </div>
                 </div>

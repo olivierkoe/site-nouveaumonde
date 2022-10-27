@@ -41,7 +41,7 @@
         ?>
 </div>
 <div class="text-center">
-    <a href="<?= URL ?>alternatives/ajouter" class="btn btn-success mb-3 mt-5 ">Ajouter</a>
+    <a href="<?= URL ?>alternatives/ajouter" class="shadow btn btn-success mb-3 mt-5 ">Ajouter</a>
 <?php
     }
 ?>

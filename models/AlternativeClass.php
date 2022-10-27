@@ -9,9 +9,12 @@ class Alternative
     private $email;
     private $site;
     private $id;
+    private $dateCreation;
+    private $dateModif;
+    private $modifAuth;
 
     //on construit cette class
-    function __construct($titre, $image, $theme, $email, $site, $id)
+    function __construct($titre, $image, $theme, $email, $site, $id, $dateCreation, $dateModif, $modifAuth)
     {
         $this->titre = $titre;
         $this->image = $image;
@@ -19,6 +22,9 @@ class Alternative
         $this->email = $email;
         $this->site = $site;
         $this->id = $id;
+        $this->dateCreation = $dateCreation;
+        $this->dateModif = $dateModif;
+        $this->modifAuth = $modifAuth;
     }
 
     // permet de récuperé le titre de cette class
@@ -57,6 +63,21 @@ class Alternative
         return $this->id;
     }
 
+    public function getDateCreation()
+    {
+        return $this->dateCreation;
+    }
+
+    public function getDateModif()
+    {
+        return $this->dateModif;
+    }
+
+    public function getModifAuth()
+    {
+        return $this->modifAuth;
+    }
+
     // permet de d'affecté un titre à cette class
     public function setTitre($titre)
     {
@@ -89,6 +110,12 @@ class Alternative
     public function setSite($site)
     {
         $this->site = $site;
+        return $this;
+    }
+
+    public function setModifAuth($modifAuth)
+    {
+        $this->modifAuth = $modifAuth;
         return $this;
     }
 }

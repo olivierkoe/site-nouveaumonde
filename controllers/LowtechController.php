@@ -35,7 +35,7 @@ class LowtechController
 
     public function ajoutLowtech()
     {
-        require "views/Update/ajoutLowtechView.php";
+        require "views/Create/ajoutLowtechView.php";
     }
 
     public function ajoutLowtechValidation()
@@ -90,12 +90,12 @@ class LowtechController
         if ($lowtechImage['newImage']['size'] !== 0 && $lowtechImage['newImage']['size'] !== $lowtechInfos['imagePresentation']) {
             $imgToAdd = $lowtechImage['newImage']['name'];
             $imgToAdd2 = $lowtechImage['newImage2']['name'];
-            $this->lowtechManager->modifierLowtechBD($_POST['id'], $lowtechInfos['titre'], $lowtechInfos['materiaux'], $lowtechInfos['fabrication'], $_POST['fonctionnement'], $imgToAdd, $imgToAdd2, $_POST['difficulte'], $_POST['temps'], $_POST['necessite'], $_POST['source']);
+            $this->lowtechManager->modifierLowtechBD($_POST['id'], $lowtechInfos['titre'], $lowtechInfos['materiaux'], $lowtechInfos['fabrication'], $_POST['fonctionnement'], $imgToAdd, $imgToAdd2, $_POST['difficulte'], $_POST['temps'], $_POST['necessite'], $_POST['source'], $_POST['modifAuth']);
             header("location: ../lowtechs");
         } else {
             $imgToAdd = $lowtechInfos['imagePresentation'];
             $imgToAdd2 = $lowtechInfos['imagePrincipe'];
-            $this->lowtechManager->modifierLowtechBD($_POST['id'], $lowtechInfos['titre'], $lowtechInfos['materiaux'], $lowtechInfos['fabrication'], $_POST['fonctionnement'], $imgToAdd, $imgToAdd2, $_POST['difficulte'], $_POST['temps'], $_POST['necessite'], $_POST['source']);
+            $this->lowtechManager->modifierLowtechBD($_POST['id'], $lowtechInfos['titre'], $lowtechInfos['materiaux'], $lowtechInfos['fabrication'], $_POST['fonctionnement'], $imgToAdd, $imgToAdd2, $_POST['difficulte'], $_POST['temps'], $_POST['necessite'], $_POST['source'], $_POST['modifAuth']);
             header("location: ../lowtech");
         }
         GlobalController::manageErrors("success", "Les modifications ont bien été enregistrées");

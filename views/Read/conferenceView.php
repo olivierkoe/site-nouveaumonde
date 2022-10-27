@@ -1,6 +1,6 @@
 <?php ob_start() ?>
 
-<div class="m-2 p-2 bg-light" id="confbg">
+<div class="shadow m-2 p-2 bg-light" id="confbg">
     <table class="table">
         <th class="m-auto"><img src="<?= URL ?>public/images/conferences/<?= $conference->getImage() ?>" style="width: 100%;" alt="image<?= $conference->getTitre() ?>"></th>
         <tr>
@@ -33,11 +33,15 @@
         <?php
         if ($_SESSION['role'] === "1" || $_SESSION['role'] === "3") {
         ?>
-            <a href="<?= URL ?>conferences/modifier/<?= $conference->getId() ?>" class="btn btn-warning mb-3 mt-5">Modifier</a>
+            <p class="mt-3" id="legende">Créer le <?= $conference->getDateCreation() ?> </p>
+            <a href="<?= URL ?>conferences/modifier/<?= $conference->getId() ?>" class="shadow btn btn-warning mb-3 mt-5">Modifier</a>
             <?php
             if ($_SESSION['role'] === "1") {
             ?>
-                <a href="<?= URL ?>conferences/supprimer/<?= $conference->getId() ?>" class="btn btn-danger mb-3 mt-5">supprimer</a>
+
+
+                <a href="<?= URL ?>conferences/supprimer/<?= $conference->getId() ?>" class="shadow btn btn-danger mb-3 mt-5">supprimer</a>
+                <p class="mt-3" id="legende">Modifié le <?= $conference->getDateModif() ?> par <?= $conference->getModifAuth() ?></p>
         <?php
             }
         }
@@ -46,7 +50,7 @@
 
 </div>
 <div class="d-flex justify-content-center">
-    <a href="<?= URL ?>conferences/" class="btn btn-primary d-block col-3">retour</a>
+    <a href="<?= URL ?>conferences/" class="shadow btn btn-primary d-block col-3">retour</a>
 </div>
 
 <?php

@@ -94,7 +94,8 @@ class AtelierController
                 $_POST['prix3'],
                 $_POST['id'],
                 $_POST['image'],
-                $_POST['id']
+                $_POST['id'],
+                $_POST['modifAuth']
             );
             header("location: ../ateliers");
         } else {
@@ -112,7 +113,8 @@ class AtelierController
                 $_POST['prix3'],
                 $_POST['id'],
                 $_POST['image'],
-                $_POST['id']
+                $_POST['id'],
+                $_POST['modifAuth']
             );
             header("location: ../atelier");
         }

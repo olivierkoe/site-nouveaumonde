@@ -1,7 +1,7 @@
 <!-- Enclenche la temporisation de sortie -->
 <?php ob_start() ?>
 
-<div id="accueilcontainer" class="container bg-light p-5 mb-5 text-center fs-3 mt-5" style="height: 60%">
+<div id="accueilcontainer" class="shadow container bg-light p-5 mb-5 text-center fs-3 mt-5" style="height: 60%">
 
     <!-- affiche le titre de la présentation -->
     <h1 class="mt-5 mb-5"><?= $fullPresentation[0]->getTitre() ?> </h1>
@@ -18,7 +18,7 @@
 if ($_SESSION['role'] === "1" || $_SESSION['role'] === "3") {
 ?>
     <div class="text-center">
-        <a href="<?= URL ?>presentation/modifier" class="btn btn-warning">Modifier</a>
+        <a href="<?= URL ?>presentation/modifier" class="shadow btn btn-warning" id="navTitle">Modifier</a>
     </div>
 
 <?php

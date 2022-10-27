@@ -68,22 +68,37 @@ class UserController
 
     public function inscription()
     {
-        if (!empty($_POST['pseudo']) || !empty($_POST['mail']) || !empty($_POST['password']) || !empty($_POST['password2'])) {
-            if ($_POST['password'] === $_POST['password2']) {
-                $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
-                $result = $this->userManager->addUserDB($_POST['pseudo'], $_POST['nom'], $_POST['prenom'], $_POST['mail'], $password, $_POST["image"]);
-                if ($result) {
-                    GlobalController::manageErrors("success", "Inscription effectuée");
-                    header("location:" . URL . "connexion");
+
+        if (isset($_POST['h-captcha-response']) && !empty($_POST['h-captcha-response'])) {
+            $secret = '0x0000000000000000000000000000000000000000';
+            $verifyResponse = file_get_contents('https://hcaptcha.com/siteverify?secret=' . $secret . '&response=' . $_POST['h-captcha-response'] . '&remoteip=' . $_SERVER['REMOTE_ADDR']);
+            $responseData = json_decode($verifyResponse);
+            if ($responseData->success) {
+                if (!empty($_POST['pseudo']) || !empty($_POST['mail']) || !empty($_POST['password']) || !empty($_POST['password2'])) {
+                    if ($_POST['password'] === $_POST['password2']) {
+                        $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+                        $infos = $_FILES['image'];
+                        $stockImage = "public/images/utilisateurs/";
+                        $saveImage = GlobalController::ajoutImage($_POST['pseudo'], $infos, $stockImage);
+                        $result = $this->userManager->addUserDB($_POST['pseudo'], $_POST['nom'], $_POST['prenom'], $_POST['mail'], $password, $saveImage);
+                        if ($result) {
+                            GlobalController::manageErrors("success", "Inscription effectuée");
+                            header("location:" . URL . "connexion");
+                        } else {
+                            throw new Exception("Une erreur est survenue lors de votre inscription");
+                        }
+                    } else {
+                        GlobalController::manageErrors("danger", "Veuillez confirmer votre mot de passe");
+                        header("location:" . URL . "inscription");
+                    }
                 } else {
-                    throw new Exception("Une erreur est survenue lors de votre inscription");
+                    GlobalController::manageErrors("danger", "Veuillez remplir tout les champs");
+                    header("location:" . URL . "inscription");
                 }
-            } else {
-                GlobalController::manageErrors("danger", "Veuillez confirmer votre mot de passe");
-                header("location:" . URL . "inscription");
             }
         } else {
-            GlobalController::manageErrors("danger", "Veuillez remplir tout les champs");
+            var_dump("farid");
+            GlobalController::manageErrors("danger", "Veuillez vérifier le captcha !!");
             header("location:" . URL . "inscription");
         }
     }
@@ -139,11 +154,11 @@ class UserController
 
         if ($utilisateurImage['newImage']['size'] !== 0 && $utilisateurImage['newImage']['size']) {
             $imgToAdd = $utilisateurImage['newImage']['name'];
-            $this->utilisateurManager->modifierUtilisateurBD($_POST['id'], $utilisateurInfos['pseudo'], $utilisateurInfos['nom'], $utilisateurInfos['prenom'], $_POST['mail'], $imgToAdd, $_POST['role']);
+            $this->utilisateurManager->modifierUtilisateurBD($_POST['id'], $utilisateurInfos['pseudo'], $utilisateurInfos['nom'], $utilisateurInfos['prenom'], $_POST['mail'], $imgToAdd, $_POST['role'], $_POST['modifAuth']);
             header("location: ../utilisateurs");
         } else {
             $imgToAdd = $utilisateurInfos['image'];
-            $this->userManager->modifierUserBD($_POST['id'], $utilisateurInfos['pseudo'], $utilisateurInfos['nom'], $utilisateurInfos['prenom'], $_POST['mail'], $imgToAdd, $_POST['role']);
+            $this->userManager->modifierUserBD($_POST['id'], $utilisateurInfos['pseudo'], $utilisateurInfos['nom'], $utilisateurInfos['prenom'], $_POST['mail'], $imgToAdd, $_POST['role'], $_POST['modifAuth']);
             header("location: ../utilisateur");
         }
         GlobalController::manageErrors("success", "Les modifications ont bien été enregistrées");

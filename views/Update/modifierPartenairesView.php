@@ -29,6 +29,7 @@
             <label for="image">Image actuel: (.avif)</label>
         </div>
         <div class="align-middle">
+            <input type="hidden" value="<?= $_SESSION["pseudo"] ?>" name="modifAuth" id="modifAuth" class="form-control">
             <input type="hidden" value="<?= $partenaires->getImage() ?>" name="imagePresentation" id="imagePresentation" class="form-control">
             <img src="<?= URL ?>public/images/partenaire/<?= $partenaires->getImage() ?>" name="image<?= $partenaires->getTitre() ?>" alt="image" width="200px;">
         </div>

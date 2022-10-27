@@ -33,7 +33,10 @@ class AtelierManager extends Model
                 $value['prix1'],
                 $value['prix2'],
                 $value['prix3'],
-                $value['id']
+                $value['id'],
+                $value['dateCreation'],
+                $value['dateModif'],
+                $value['modifAuth']
             );
             $this->ajoutAtelier($newAtelier);
         }
@@ -47,6 +50,7 @@ class AtelierManager extends Model
             }
         }
     }
+
     public function ajoutAtelierBD($titre, $argument1,  $sourceArg1, $prix1, $argument2, $sourceArg2, $prix2, $argument3, $sourceArg3, $prix3)
     {
         $db = $this->getBdd();
@@ -77,10 +81,10 @@ class AtelierManager extends Model
         ]);
     }
 
-    public function modifierAtelierBD($id, $titre, $argument1, $sourceArg1, $prix1, $argument2, $sourceArg2, $prix2, $argument3, $sourceArg3, $prix3)
+    public function modifierAtelierBD($id, $titre, $argument1, $sourceArg1, $prix1, $argument2, $sourceArg2, $prix2, $argument3, $sourceArg3, $prix3, $modifAuth)
     {
         $db = $this->getBdd();
-        $sql = "UPDATE ateliers SET titre =:titre, argument1 = :argument1, argument2 = :argument2, argument3 = :argument3, sourceArg1 = :sourceArg1, sourceArg2 = :sourceArg2, sourceArg3 = :sourceArg3, prix1 = :prix1, prix2 = :prix2,  prix3 = :prix3 WHERE id = :id";
+        $sql = "UPDATE ateliers SET titre =:titre, argument1 = :argument1, argument2 = :argument2, argument3 = :argument3, sourceArg1 = :sourceArg1, sourceArg2 = :sourceArg2, sourceArg3 = :sourceArg3, prix1 = :prix1, prix2 = :prix2,  prix3 = :prix3, modifAuth = :modifAuth WHERE id = :id";
         $req = $db->prepare($sql);
         $req->execute([
             ":titre" => $titre,
@@ -93,7 +97,8 @@ class AtelierManager extends Model
             ":prix1" => $prix1,
             ":prix2" => $prix2,
             ":prix3" => $prix3,
-            ":id" => $id
+            ":id" => $id,
+            ":modifAuth" => $modifAuth
         ]);
     }
 }

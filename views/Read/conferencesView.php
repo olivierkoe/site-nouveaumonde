@@ -6,7 +6,7 @@
 
     <?php
     foreach ($listeconferences as $value) {
-    ?> <div id="confCard" class="card border border-0 mb-3">
+    ?> <div id="confCard" class="shadow card border border-0 mb-3">
             <img id="imgConference" src="<?= URL ?>public/images/conferences/<?= $value->getImage() ?>" class="card-img-top" alt="image<?= $value->getTitre() ?>">
             <div class="card-body">
                 <h5 class="card-title text-center"><a href="<?= URL ?>conferences/conference/<?= $value->getId() ?>"><?= $value->getTitre() ?></a></h5>
@@ -27,7 +27,7 @@
 if ($_SESSION['role'] === "1" || $_SESSION['role'] === "3") {
 ?>
     <div class="d-flex justify-content-center">
-        <a href="<?= URL ?>conferences/ajouter" class="btn btn-success d-block">Ajouter</a>
+        <a href="<?= URL ?>conferences/ajouter" class="shadow btn btn-success d-block">Ajouter</a>
     </div>
 <?php
 }
